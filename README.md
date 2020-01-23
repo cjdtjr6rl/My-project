@@ -12,5 +12,5 @@
 
 > [20200121-nalab](https://github.com/cjdtjr6rl/My-project/blob/master/Na-Lab/20200121-nalab.md)
 >
-> [20200122-nalab]()
+> [20200123-nalab](https://github.com/cjdtjr6rl/My-project/blob/master/Na-Lab/20200123-nalab.md)
 
