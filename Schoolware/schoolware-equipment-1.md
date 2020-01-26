@@ -302,28 +302,28 @@
 
   ```html
   <form action="${pageContext.request.contextPath}/equipment_rentEdit.do" method="post">
-  					<div class="panel panel-grey" id="menu4" style="display: none;">
-  						<div class="panel-heading text-center">
-  							<h3 class="panel-title">
-  								<i class="glyphicon glyphicon-pencil"></i>대여일수 변경
-  							</h3>
-  						</div>
-  						<div class="panel-body" id="table_form" style="overflow: auto;">
-  							<table class="table table-bordered table-border-grey" id="hiddenTable">
-  								<tbody>
-  									<tr>
-  										<th class="bg-color-grey">실 대여일</th>
-  										<th><label class="input"> <input type="text" name="rentNumber">
-  										</label></th>
-  										<input type="hidden" name="totalCount" value="${totalCount.total }">
-  										<input type="hidden" name="major_code" value="${user_info.major_code }">
-  									</tr>
-  								</tbody>
-  							</table>
-  						</div>
-  						<input type="submit" name="submit" value="변경 " class="btn-u btn-u-default ladda-button btn-block" data-style="zoom-in">
-  					</div>
-  				</form>
+  	<div class="panel panel-grey" id="menu4" style="display: none;">
+  		<div class="panel-heading text-center">
+  			<h3 class="panel-title">
+  				<i class="glyphicon glyphicon-pencil"></i>대여일수 변경
+  			</h3>
+  		</div>
+  		<div class="panel-body" id="table_form" style="overflow: auto;">
+  			<table class="table table-bordered table-border-grey" id="hiddenTable">
+  				<tbody>
+  					<tr>
+  						<th class="bg-color-grey">실 대여일</th>
+  						<th><label class="input"> <input type="text" name="rentNumber">
+  						</label></th>
+  						<input type="hidden" name="totalCount" value="${totalCount.total }">
+  						<input type="hidden" name="major_code" value="${user_info.major_code }">
+  					</tr>
+  				</tbody>
+  			</table>
+  		</div>
+  		<input type="submit" name="submit" value="변경 " class="btn-u btn-u-default ladda-button btn-block" data-style="zoom-in">
+  	</div>
+  </form>
   ```
 
   <br/>
@@ -336,26 +336,82 @@
 
   ![cal](https://user-images.githubusercontent.com/43205396/73136617-c9025e80-4092-11ea-9c22-df02d99fbbd1.png)
 
-  <form action="${pageContext.request.contextPath}/equipment_rentEdit.do" method="post">
-  					<div class="panel panel-grey" id="menu4" style="display: none;">
-  						<div class="panel-heading text-center">
-  							<h3 class="panel-title">
-  								<i class="glyphicon glyphicon-pencil"></i>대여일수 변경
-  							</h3>
-  						</div>
-  						<div class="panel-body" id="table_form" style="overflow: auto;">
-  							<table class="table table-bordered table-border-grey" id="hiddenTable">
-  								<tbody>
-  									<tr>
-  										<th class="bg-color-grey">실 대여일</th>
-  										<th><label class="input"> <input type="text" name="rentNumber">
-  										</label></th>
-  										<input type="hidden" name="totalCount" value="${totalCount.total }">
-  										<input type="hidden" name="major_code" value="${user_info.major_code }">
-  									</tr>
-  								</tbody>
-  							</table>
-  						</div>
-  						<input type="submit" name="submit" value="변경 " class="btn-u btn-u-default ladda-button btn-block" data-style="zoom-in">
-  					</div>
-  				</form>
+  ```jsp
+  <%@ page language="java" contentType="text/html; charset=utf-8"
+  	pageEncoding="utf-8"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html>
+  <head>
+  <link rel='stylesheet' type='text/css' href='http://www.blueb.co.kr/data/201010/IJ12872423858253/fullcalendar.css' />
+  <script type='text/javascript' src='http://www.blueb.co.kr/data/201010/IJ12872423858253/jquery.js'></script>
+  <script type='text/javascript' src='http://www.blueb.co.kr/data/201010/IJ12872423858253/jquery-ui-custom.js'></script>
+  <script type='text/javascript' src='http://www.blueb.co.kr/data/201010/IJ12872423858253/fullcalendar.min.js'></script>
+  <script type='text/javascript'>
+  
+  	$(document).ready(function() {
+  	
+  		var date = new Date();
+  		var d = date.getDate();
+  		var m = date.getMonth();
+  		var y = date.getFullYear();
+  		
+  		var startDay = new Array();
+  		var endDay = new Array();
+  		
+  		var events = [];
+  		var strArray = [];
+  		var endArray = [];
+  		
+  		<c:forEach items="${dTable}" var="dTable">
+  		<c:if test="${dTable.returnStatus ne '반납' }">
+  			strArray = "${dTable.start_day}".split('-');
+  			endArray = "${dTable.end_day}".split('-');
+  			events.push({
+  				title: '${dTable.seri_enroll_num}',
+  				start: new Date(strArray[0], strArray[1]-1, strArray[2]),
+  				end: new Date(endArray[0], endArray[1]-1, endArray[2])
+  			});
+  		</c:if>
+  		</c:forEach>
+  		
+  		$('#calendar').fullCalendar({
+  			monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ],
+              monthNamesShort : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ],
+              dayNames : [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일" ],
+              dayNamesShort : [ "일", "월", "화", "수", "목", "금", "토" ],
+              dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+              weekHeader : "주",
+  			header: {
+  				left: 'prev,next today',
+  				center: 'title',
+  				right: 'no use'
+  			},
+  			events: events
+  		});		
+  	});
+  
+  </script>
+  <style type='text/css'>
+  
+  	body {
+  		margin-top: 40px;
+  		text-align: center;
+  		font-size: 14px;
+  		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  		}
+  
+  	#calendar {
+  		width: 900px;
+  		margin: 0 auto;
+  		}
+  
+  </style>
+  </head>
+  <body>
+  <div id='calendar'></div>
+  </body>
+  </html>
+  ```
+  
+  
