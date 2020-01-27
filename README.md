@@ -19,3 +19,6 @@
 ### Schoolware
 
 > [schoolware-equipment-1](https://github.com/cjdtjr6rl/My-project/blob/master/Schoolware/schoolware-equipment-1.md)
+>
+> [schoolware-equipment-2](https://github.com/cjdtjr6rl/My-project/blob/master/Schoolware/schoolware-equipment-2.md)
+
