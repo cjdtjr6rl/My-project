@@ -44,7 +44,7 @@
   
   제한된 날짜를 db로 불러와 ui상으로 출력하게 하였습니다.<br/>
   
-  page를 불러오는 servlet은<br/>
+  page를 불러오는 servlet은 아래의 코드로 진행이 됩니다.<br/>
   
   ### equipment.controller 중 management_st부분
   
