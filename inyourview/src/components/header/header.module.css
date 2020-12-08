@@ -1,0 +1,39 @@
+.header {
+  padding: 1rem 10rem;
+}
+.header:hover {
+    background-color: rgb(243, 243, 243, 0.5);
+}
+
+.logo {
+    width: 3em;
+}
+
+.ul {
+  display: flex;
+  float: right;
+  list-style: none;
+  padding: 0;
+  marin-top: 16px;
+}
+
+.li {
+  margin-right: 2em;
+}
+
+.li:last-child {
+  margin: 0;
+}
+
+.button {
+  font-size: 0.9rem;
+  background: none;
+  color: black;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
