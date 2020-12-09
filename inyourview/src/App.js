@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from "./components/main/main";
 import Intro from "./components/intro/intro";
 import Portfolio from "./components/portfolio/portfolio";
+import Way from "./components/way/way";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/portfolio">
             <Portfolio />
+          </Route>
+          <Route path="/way">
+            <Way />
           </Route>
         </Switch>
       </BrowserRouter>

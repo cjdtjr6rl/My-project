@@ -38,7 +38,7 @@ function Header(props) {
     <header className={styles.header}>
       <img
         className={styles.logo}
-        src="/images/Jun_image.png"
+        src="/images/logo.png"
         alt="In Your View Logo"
         onClick={goToHome}
       />
