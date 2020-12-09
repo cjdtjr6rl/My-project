@@ -1,12 +1,15 @@
 .header {
   padding: 1rem 10rem;
+  height: 5em;
+  transition: all 0.5s ease;
 }
 .header:hover {
-    background-color: rgb(243, 243, 243, 0.5);
+    background-color: rgba(255, 243, 178, 0.5);
 }
 
 .logo {
     width: 3em;
+    cursor: pointer;
 }
 
 .ul {
@@ -14,15 +17,32 @@
   float: right;
   list-style: none;
   padding: 0;
-  marin-top: 16px;
+  margin-top: 16px;
 }
 
 .li {
   margin-right: 2em;
+  position: relative;
 }
 
 .li:last-child {
   margin: 0;
+}
+
+.sevul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    padding: 0;
+    width: 80px;
+    background-color: rgba(255, 243, 178, 0.5);
+    transition: all 0.5s ease;
+}
+
+.sevli {
+    padding: 6px 0;
 }
 
 .button {
@@ -36,4 +56,8 @@
 
 .button:hover {
   opacity: 0.5;
+}
+
+.btn {
+    font-size: 0.7rem;
 }

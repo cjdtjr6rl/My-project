@@ -2,10 +2,12 @@
     width: 100%;
     border-top: 2px solid lightgray;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .title {
     margin: 0;
-    color: white;
   }
   
