@@ -12,13 +12,21 @@ function Main() {
     <section className={styles.main}>
       <Header />
       <div className={styles.hello}>
-        <AutoplaySlider play={true} cancelOnInteraction={false} interval={3000}>
-          <div data-src="/images/test1.png" />
-          <div data-src="/images/test2.png" />
-          <div data-src="/images/test3.png" />
-          <div data-src="/images/test4.png" />
-          <div data-src="/images/test5.png" />
-        </AutoplaySlider>
+        <div className={styles.sliding}>
+          <AutoplaySlider
+            play={true}
+            cancelOnInteraction={false}
+            interval={3000}
+            bullets={false}
+            className={styles.slide}
+          >
+            <div data-src="/images/test1.png" />
+            <div data-src="/images/test2.png" />
+            <div data-src="/images/test3.png" />
+            <div data-src="/images/test4.png" />
+            <div data-src="/images/test5.png" />
+          </AutoplaySlider>
+        </div>
         <Footer />
       </div>
     </section>

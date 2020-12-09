@@ -6,7 +6,7 @@ import Slide from "react-reveal/Slide";
 
 function Portfolio(props) {
   return (
-    <section className={styles.main}>
+    <section className={styles.portfolio}>
       <Header />
       <div id="height" className={styles.hello}>
         <Slide left>

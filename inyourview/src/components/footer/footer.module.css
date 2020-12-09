@@ -1,14 +1,31 @@
 .footer {
     width: 100%;
     border-top: 2px solid lightgray;
-    text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4em;
-  }
+    text-align: start;
+    margin-bottom: 2em;
+}
+
+.ul {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    font-size: 15px;
+}
   
-  .title {
-    margin: 0;
-  }
-  
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.textlogo {
+    margin-top: 2em;
+}
+
+.img {
+    width: 100px;
+}
+
+.foot {
+    margin: 0 6em;
+}
