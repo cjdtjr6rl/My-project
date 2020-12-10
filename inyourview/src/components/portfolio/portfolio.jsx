@@ -12,28 +12,35 @@ function Portfolio(props) {
         <Slide left>
           <img
             className={`${styles.img} ${styles.left}`}
-            src="/images/Jun_image.png"
+            src="/images/test1.png"
             alt="In Your View Logo"
           />
         </Slide>
         <Slide right>
           <img
             className={`${styles.img} ${styles.right}`}
-            src="/images/Jun_image.png"
+            src="/images/test2.png"
             alt="In Your View Logo"
           />
         </Slide>
         <Slide left>
           <img
             className={`${styles.img} ${styles.left}`}
-            src="/images/Jun_image.png"
+            src="/images/test3.png"
             alt="In Your View Logo"
           />
         </Slide>
         <Slide right>
           <img
             className={`${styles.img} ${styles.right}`}
-            src="/images/Jun_image.png"
+            src="/images/test4.png"
+            alt="In Your View Logo"
+          />
+        </Slide>
+        <Slide left>
+          <img
+            className={`${styles.img} ${styles.left}`}
+            src="/images/test5.png"
             alt="In Your View Logo"
           />
         </Slide>

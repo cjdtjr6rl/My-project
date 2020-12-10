@@ -15,8 +15,8 @@
 
 .img {
     display: block;
-    width: 50rem;
-    height: 50rem;
+    width: 51%;
+    margin: 2em;
 }
 
 .left {
