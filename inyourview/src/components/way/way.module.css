@@ -8,7 +8,28 @@
 .hello {
     margin: 0 7em;
     padding: 0;
-    overflow-y: auto;
+    overflow: hidden;
     flex: 1 1;
     text-align: center;
+}
+
+.map {
+    margin: 2em;
+    position: relative;
+    display: flex;
+    text-align: center;
+}
+
+.left {
+    margin-right: 2.5%;
+    width: 45%;
+}
+
+.right {
+    margin-left: 2.5%;
+    width: 45%;
+}
+
+.img {
+    width: 100%;
 }

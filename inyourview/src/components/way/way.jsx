@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import Mapping from "../map/map";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./way.module.css";
@@ -10,21 +10,14 @@ class Way extends Component {
       <section className={styles.way}>
         <Header />
         <div className={styles.hello}>
-          <Map
-            google={this.props.google}
-            zoom={17}
-            initialCenter={{
-              lat: "037.595800542221255",
-              lng: "127.13749995175745",
-            }}
-          >
-            <Marker
-              position={{
-                lat: "037.595800542221255",
-                lng: "127.13749995175745",
-              }}
-            />
-          </Map>
+          <div className={styles.map}>
+            <div className={styles.left}>
+              <img className={styles.img} src="/images/map.png" alt="map" />
+            </div>
+            <div className={styles.right}>
+              <Mapping />
+            </div>
+          </div>
           <Footer />
         </div>
       </section>
@@ -32,6 +25,4 @@ class Way extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyB0Psee7H4aoCqnZZVE1MRRBnG3jdgOZ9s",
-})(Way);
+export default Way;
