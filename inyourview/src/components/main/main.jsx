@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./main.module.css";
 import AwesomeSlider from "react-awesome-slider";
@@ -8,6 +7,9 @@ import "react-awesome-slider/dist/styles.css";
 
 function Main() {
   const AutoplaySlider = withAutoplay(AwesomeSlider);
+  const imgStyle = {
+    height: "100vh",
+  };
   return (
     <section className={styles.main}>
       <Header />
@@ -18,6 +20,7 @@ function Main() {
             cancelOnInteraction={false}
             interval={3000}
             bullets={false}
+            style={imgStyle}
             className={styles.slide}
           >
             <div data-src="/images/test1.png" />
@@ -27,7 +30,6 @@ function Main() {
             <div data-src="/images/test5.png" />
           </AutoplaySlider>
         </div>
-        <Footer />
       </div>
     </section>
   );

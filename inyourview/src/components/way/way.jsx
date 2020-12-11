@@ -10,6 +10,7 @@ class Way extends Component {
       <section className={styles.way}>
         <Header />
         <div className={styles.hello}>
+          <h3>찾아오는 길</h3>
           <div className={styles.map}>
             <div className={styles.left}>
               <img className={styles.img} src="/images/map.png" alt="map" />
@@ -18,6 +19,11 @@ class Way extends Component {
               <Mapping />
             </div>
           </div>
+          <span>
+            <p>서울시 강서구 마곡동 800-1 문영퀸즈파크11차B동 724호</p>
+            <p>KAKAO: 인유여뷰</p>
+            <p>e-MAIL: inyourviewpr@gmail.com</p>
+          </span>
           <Footer />
         </div>
       </section>

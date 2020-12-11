@@ -6,13 +6,14 @@
 }
 
 .hello {
-    margin: 0 5em;
-    padding: 0;
-    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: none;
     flex: 1 1;
     text-align: center;
 }
 
 .sliding {
-    margin: 2em 8em;
+    
 }

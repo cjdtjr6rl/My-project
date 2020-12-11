@@ -2,9 +2,10 @@
   padding: 1rem 10rem;
   height: 5em;
   transition: all 0.5s ease;
+  z-index: 3;
 }
 .header:hover {
-    background-color: rgba(255, 243, 178, 0.5);
+    background-color: rgba(253, 253, 253, 0.5);
 }
 
 .logo {
@@ -37,9 +38,8 @@
     left: 0;
     padding: 0;
     width: 80px;
-    background-color: rgba(255, 243, 178, 0.5);
+    background-color: rgba(253, 253, 253, 0.5);
     transition: all 0.5s ease;
-    z-index: 3;
 }
 
 .sevli {
@@ -48,8 +48,9 @@
 
 .button {
   font-size: 0.9rem;
+  font-weight: 700;
   background: none;
-  color: black;
+  color: chocolate;
   outline: 0;
   border: none;
   cursor: pointer;
