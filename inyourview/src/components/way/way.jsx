@@ -19,7 +19,7 @@ class Way extends Component {
               <Mapping />
             </div>
           </div>
-          <span>
+          <span className={styles.info}>
             <p>서울시 강서구 마곡동 800-1 문영퀸즈파크11차B동 724호</p>
             <p>KAKAO: 인유여뷰</p>
             <p>e-MAIL: inyourviewpr@gmail.com</p>
