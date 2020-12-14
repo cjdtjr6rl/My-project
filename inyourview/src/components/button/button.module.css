@@ -1,0 +1,11 @@
+.button {
+    float: right;
+    padding: 12px 25px 15px 25px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Nanum Gothic,'Nanum Gothic',sans-serif;
+    background: #555555;
+    border: 1px solid #555555;
+    color: white;
+    cursor: pointer;
+}

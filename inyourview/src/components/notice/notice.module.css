@@ -16,3 +16,11 @@
     flex: 1 1;
     text-align: center;
 }
+
+.table {
+    width: 100%;
+}
+
+.tablewrap {
+    margin: 10em 6em;
+}
