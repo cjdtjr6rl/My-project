@@ -4,6 +4,7 @@ import Main from "./components/main/main";
 import Intro from "./components/intro/intro";
 import Portfolio from "./components/portfolio/portfolio";
 import Way from "./components/way/way";
+import Notice from "./components/notice/notice";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/way">
             <Way />
+          </Route>
+          <Route path="/notice">
+            <Notice />
           </Route>
         </Switch>
       </BrowserRouter>

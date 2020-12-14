@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+.title {
+    margin: 5em 0;
+}
+
 .hello {
     margin: 0 7em;
     padding: 0;
@@ -37,5 +41,5 @@
 
 .info {
     display: block;
-    margin: 4em 0;
+    margin: 6em 0;
 }

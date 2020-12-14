@@ -8,8 +8,8 @@ function Portfolio(props) {
   return (
     <section className={styles.portfolio}>
       <Header />
-      <div id="height" className={styles.hello}>
-        <h3>포트폴리오</h3>
+      <article id="height" className={styles.hello}>
+        <h3 className={styles.title}>포트폴리오</h3>
         <Slide left>
           <img
             className={`${styles.img} ${styles.left}`}
@@ -46,7 +46,7 @@ function Portfolio(props) {
           />
         </Slide>
         <Footer />
-      </div>
+      </article>
     </section>
   );
 }

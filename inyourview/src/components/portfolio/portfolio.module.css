@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+.title {
+    margin: 5em 0;
+}
+
 .hello {
     margin: 0 7em;
     padding: 0;
@@ -16,7 +20,7 @@
 .img {
     display: block;
     width: 51%;
-    margin: 2em;
+    margin-bottom: 5em;
 }
 
 .left {

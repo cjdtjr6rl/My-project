@@ -13,8 +13,8 @@ function Main() {
   return (
     <section className={styles.main}>
       <Header />
-      <div className={styles.hello}>
-        <div className={styles.sliding}>
+      <article className={styles.hello}>
+        <span className={styles.sliding}>
           <AutoplaySlider
             play={true}
             cancelOnInteraction={false}
@@ -29,8 +29,8 @@ function Main() {
             <div data-src="/images/test4.png" />
             <div data-src="/images/test5.png" />
           </AutoplaySlider>
-        </div>
-      </div>
+        </span>
+      </article>
     </section>
   );
 }

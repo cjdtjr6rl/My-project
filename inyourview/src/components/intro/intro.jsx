@@ -7,9 +7,9 @@ function Intro(props) {
   return (
     <section className={styles.intro}>
       <Header />
-      <div className={styles.hello}>
-        <h3>소개</h3>
-      </div>
+      <article className={styles.hello}>
+        <h3 className={styles.title}>소개</h3>
+      </article>
       <Footer />
     </section>
   );
