@@ -1,13 +1,14 @@
 import React from "react";
 import { Label, Table } from "semantic-ui-react";
+// import styles from './notice_list.module.css';
 
 function NoticeList({ notice }) {
-  const { title, name, date } = notice;
+  const { id, title, name, date } = notice;
   return (
     <>
       <Table.Row>
         <Table.Cell>
-          <Label ribbon>1</Label>
+          <Label ribbon>{id}</Label>
         </Table.Cell>
         <Table.Cell>{title}</Table.Cell>
         <Table.Cell>{name}</Table.Cell>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from "./notice_add_form.module.css";
@@ -8,6 +8,15 @@ import moment from "moment";
 
 function NoticeAddForm({ noticeRepository }) {
   const history = useHistory();
+  const [notices, setNotices] = useState({});
+
+  useEffect(() => {
+    const stopSync = noticeRepository.syncNotice((notices) => {
+      setNotices(notices);
+    });
+    return () => stopSync();
+  }, [noticeRepository]);
+  const number = Object.keys(notices).length + 1;
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -25,7 +34,7 @@ function NoticeAddForm({ noticeRepository }) {
     e.preventDefault();
     const date = Date.now();
     const notice = {
-      id: date,
+      id: number,
       name: nameRef.current.value || "",
       title: titleRef.current.value || "",
       content: contentRef.current.value || "",
