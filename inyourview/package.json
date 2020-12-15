@@ -9,6 +9,7 @@
     "aos": "^2.3.4",
     "firebase": "^8.1.2",
     "google-maps-react": "^2.0.6",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-animate-on-scroll": "^2.1.5",
     "react-awesome-slider": "^4.1.0",

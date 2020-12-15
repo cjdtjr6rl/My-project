@@ -1,26 +1,46 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from "./notice_add_form.module.css";
 import Button from "../button/button";
+import { useHistory } from "react-router-dom";
+import moment from "moment";
 
-function NoticeAddForm(props) {
+function NoticeAddForm({ noticeRepository }) {
+  const history = useHistory();
+
   const formRef = useRef();
   const titleRef = useRef();
   const nameRef = useRef();
   const contentRef = useRef();
+  const pwdRef = useRef();
+
+  const [password, setPwd] = useState("");
+
+  const onChange = function (e) {
+    setPwd(e.target.value);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const blank = {
-      id: Date.now(),
+    const date = Date.now();
+    const notice = {
+      id: date,
       name: nameRef.current.value || "",
       title: titleRef.current.value || "",
       content: contentRef.current.value || "",
+      date: moment(date).format("yyyy-MM-DD"),
+      password: pwdRef.current.value || "",
+      secret: password,
     };
 
     formRef.current.reset();
-    console.log(blank);
+    noticeRepository.saveNotice(notice);
+    history.push("/notice");
+  };
+
+  const goBack = function () {
+    history.push("/notice");
   };
 
   return (
@@ -66,9 +86,34 @@ function NoticeAddForm(props) {
                   />
                 </td>
               </tr>
+              <tr className={styles.tr}>
+                <th className={styles.th}>비밀번호</th>
+                <td className={styles.td}>
+                  <input
+                    ref={pwdRef}
+                    className={styles.input}
+                    type="password"
+                    name="password"
+                  />
+                </td>
+              </tr>
+              <tr className={styles.tr}>
+                <th className={styles.th}>비밀글설정</th>
+                <td
+                  className={`${styles.td} ${styles.radio}`}
+                  onChange={onChange}
+                >
+                  <input type="radio" name="secret" value="common" />
+                  공개글&nbsp;
+                  <input type="radio" name="secret" value="secret" />
+                  비밀글
+                </td>
+              </tr>
             </tbody>
           </table>
           <Button name="등록" onClick={onSubmit} />
+          &nbsp;
+          <Button name="취소" onClick={goBack} />
         </form>
         <Footer />
       </article>

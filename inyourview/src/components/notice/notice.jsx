@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
 import Button from "../button/button";
 import Footer from "../footer/footer";
 import Header from "../header/header";
+import NoticeList from "../notice_list/notice_list";
 import styles from "./notice.module.css";
 
-function Notice(props) {
+function Notice({ noticeRepository }) {
   const history = useHistory();
+  const [notices, setNotices] = useState({});
+
+  useEffect(() => {
+    const stopSync = noticeRepository.syncNotice((notices) => {
+      setNotices(notices);
+    });
+    return () => stopSync();
+  }, [noticeRepository]);
+
   const onClick = function () {
     history.push("/noticeAdd");
   };
@@ -29,38 +39,9 @@ function Notice(props) {
             </Table.Header>
 
             <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Label ribbon>1</Label>
-                </Table.Cell>
-                <Table.Cell>2021년도 가격 이벤트</Table.Cell>
-                <Table.Cell>이준형</Table.Cell>
-                <Table.Cell>2020-12-12</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Label>2</Label>
-                </Table.Cell>
-                <Table.Cell>제목 test2</Table.Cell>
-                <Table.Cell>이준형</Table.Cell>
-                <Table.Cell>2020-12-13</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Label>3</Label>
-                </Table.Cell>
-                <Table.Cell>제목 test3</Table.Cell>
-                <Table.Cell>이준형</Table.Cell>
-                <Table.Cell>2020-12-14</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Label>4</Label>
-                </Table.Cell>
-                <Table.Cell>제목 test4</Table.Cell>
-                <Table.Cell>이준형</Table.Cell>
-                <Table.Cell>2020-12-15</Table.Cell>
-              </Table.Row>
+              {Object.keys(notices).map((key) => (
+                <NoticeList key={key} notice={notices[key]} />
+              ))}
             </Table.Body>
 
             <Table.Footer>

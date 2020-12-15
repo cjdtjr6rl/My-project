@@ -6,7 +6,7 @@
 }
 
 .title {
-    margin: 5em 0;
+    margin: 5em 0 !important;
 }
 
 .hello {
@@ -19,9 +19,10 @@
 
 .form {
     display: flex;
-    width: 100%;
+    width: 1000px;
     flex-wrap: wrap;
-    margin-bottom: 1em;
+    margin: 0 auto 6em;
+    justify-content: flex-end;
 }
 
 .input,
@@ -45,12 +46,22 @@
 
 .textarea {
   flex-basis: 100%;
+  height: 200px;
+  resize: none;
 }
 
 .table {
     width: 100%;
 }
 
+.th {
+    width: 10%;
+}
+
 .td {
     padding: 8px 10px 7px;
+}
+
+.radio {
+    float: left;
 }

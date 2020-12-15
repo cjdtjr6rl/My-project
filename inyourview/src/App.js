@@ -11,7 +11,7 @@ import { Container, Header, List } from "semantic-ui-react";
 import pkg from "semantic-ui-react/package.json";
 import NoticeAddForm from "./components/notice_add_form/notice_add_form";
 
-function App({ children }) {
+function App({ children, noticeRepository }) {
   <Container style={{ margin: 20 }}>
     <Header as="h3">
       This example is powered by Semantic UI React {pkg.version} 😊
@@ -58,10 +58,10 @@ function App({ children }) {
             <Way />
           </Route>
           <Route path="/notice">
-            <Notice />
+            <Notice noticeRepository={noticeRepository} />
           </Route>
           <Route path="/noticeAdd">
-            <NoticeAddForm />
+            <NoticeAddForm noticeRepository={noticeRepository} />
           </Route>
         </Switch>
       </BrowserRouter>
