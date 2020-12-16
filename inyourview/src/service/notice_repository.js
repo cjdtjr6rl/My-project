@@ -14,9 +14,9 @@ class NoticeRepository {
     firebaseDatabase.ref(`notice/${notice.id}`).set(notice);
   }
 
-  // removeCard(userId, card) {
-  //     firebaseDatabase.ref(`maker/${userId}/cards/${card.id}`).remove();
-  // }
+  removeNotice(id) {
+    firebaseDatabase.ref(`notice/${id}`).remove();
+  }
 }
 
 export default NoticeRepository;

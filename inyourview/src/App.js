@@ -5,11 +5,13 @@ import Intro from "./components/intro/intro";
 import Portfolio from "./components/portfolio/portfolio";
 import Way from "./components/way/way";
 import Notice from "./components/notice/notice";
+import NoticeAddForm from "./components/notice_add_form/notice_add_form";
+import NoticeEditForm from "./components/notice_edit_form/notice_edit_form";
+import NoticeDetail from "./components/notice_detail/notice_detail";
 
 import { Container, Header, List } from "semantic-ui-react";
 
 import pkg from "semantic-ui-react/package.json";
-import NoticeAddForm from "./components/notice_add_form/notice_add_form";
 
 function App({ children, noticeRepository }) {
   <Container style={{ margin: 20 }}>
@@ -62,6 +64,12 @@ function App({ children, noticeRepository }) {
           </Route>
           <Route path="/noticeAdd">
             <NoticeAddForm noticeRepository={noticeRepository} />
+          </Route>
+          <Route path="/noticeDetail">
+            <NoticeDetail noticeRepository={noticeRepository} />
+          </Route>
+          <Route path="/noticeEdit">
+            <NoticeEditForm noticeRepository={noticeRepository} />
           </Route>
         </Switch>
       </BrowserRouter>
