@@ -3,15 +3,15 @@ import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import Footer from "../footer/footer";
 import Header from "../header/header";
-import styles from "./notice_detail.module.css";
+import styles from "./qna_detail.module.css";
 import { useLocation } from "react-router";
 import CryptoJS from "crypto-js";
 
-function NoticeDetail({ noticeRepository }) {
+function QnaDetail({ qnaRepository }) {
   const history = useHistory();
   const data = useLocation();
-  const noticeData = data.state;
-  const { id, title, name, date, content, password } = noticeData;
+  const qnaData = data.state;
+  const { id, title, name, date, content, password } = qnaData;
 
   const pwdRef = useRef();
 
@@ -20,18 +20,18 @@ function NoticeDetail({ noticeRepository }) {
   };
 
   const goEdit = function () {
-    history.push(`/noticeEdit/${id}`, noticeData);
+    history.push(`/qnaEdit/${id}`, qnaData);
   };
 
   const decrypt = JSON.parse(
     CryptoJS.AES.decrypt(password, "secret-key-1").toString(CryptoJS.enc.Utf8)
   );
 
-  const deleteNotice = () => {
+  const deleteQna = () => {
     if (window.confirm("삭제 하시겠습니까?")) {
       if (pwdRef.current.value === decrypt) {
-        noticeRepository.removeNotice(id);
-        history.push("/notice");
+        qnaRepository.removeQna(id);
+        history.push("/qna");
       } else {
         alert("비밀번호가 일치하지 않습니다.");
         return;
@@ -42,10 +42,10 @@ function NoticeDetail({ noticeRepository }) {
   };
 
   return (
-    <section className={styles.noticedetail}>
+    <section className={styles.qnaetail}>
       <Header />
       <article className={styles.hello}>
-        <h3 className={styles.title}>공지사항</h3>
+        <h3 className={styles.title}>QnA</h3>
         <div className={styles.tablewrap}>
           <table className={styles.table}>
             <tbody className={styles.tbody}>
@@ -99,7 +99,7 @@ function NoticeDetail({ noticeRepository }) {
           &nbsp;
           <Button name="수정" onClick={goEdit} />
           &nbsp;
-          <Button name="삭제" onClick={deleteNotice} />
+          <Button name="삭제" onClick={deleteQna} />
         </div>
         <Footer />
       </article>
@@ -107,4 +107,4 @@ function NoticeDetail({ noticeRepository }) {
   );
 }
 
-export default NoticeDetail;
+export default QnaDetail;

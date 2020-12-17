@@ -12,8 +12,13 @@ import NoticeDetail from "./components/notice_detail/notice_detail";
 import { Container, Header, List } from "semantic-ui-react";
 
 import pkg from "semantic-ui-react/package.json";
+import Qna from "./components/qna/qna";
+import QnaAddForm from "./components/qna_add_form/qna_add_form";
+import QnaDetail from "./components/qna_detail/qna_detail";
+import QnaEditForm from "./components/qna_edit_form/qna_edit_form";
+import Login from "./components/login/login";
 
-function App({ children, noticeRepository }) {
+function App({ children, noticeRepository, qnaRepository, loginRepository }) {
   <Container style={{ margin: 20 }}>
     <Header as="h3">
       This example is powered by Semantic UI React {pkg.version} 😊
@@ -50,6 +55,9 @@ function App({ children, noticeRepository }) {
           <Route exact path="/">
             <Main />
           </Route>
+          <Route path="/login">
+            <Login loginRepository={loginRepository} />
+          </Route>
           <Route path="/intro">
             <Intro />
           </Route>
@@ -70,6 +78,18 @@ function App({ children, noticeRepository }) {
           </Route>
           <Route path="/noticeEdit">
             <NoticeEditForm noticeRepository={noticeRepository} />
+          </Route>
+          <Route path="/qna">
+            <Qna qnaRepository={qnaRepository} />
+          </Route>
+          <Route path="/qnaAdd">
+            <QnaAddForm qnaRepository={qnaRepository} />
+          </Route>
+          <Route path="/qnaDetail">
+            <QnaDetail qnaRepository={qnaRepository} />
+          </Route>
+          <Route path="/qnaEdit">
+            <QnaEditForm qnaRepository={qnaRepository} />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -1,7 +1,20 @@
 import React from "react";
+import { useHistory } from "react-router";
 import styles from "./footer.module.css";
 
 function Footer(props) {
+  const history = useHistory();
+
+  const goLogin = function () {
+    history.push("/login");
+    // const return_value = prompt("비밀번호를 입력하세요.");
+    // if (return_value === password) {
+    //   history.push(`/`, qna);
+    // } else {
+    //   return false;
+    // }
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.foot}>
@@ -45,6 +58,9 @@ function Footer(props) {
           <ul className={styles.ul}>
             <li>
               <span>Follow us</span>
+            </li>
+            <li className={styles.login}>
+              <span onClick={goLogin}>Log In</span>
             </li>
           </ul>
         </section>

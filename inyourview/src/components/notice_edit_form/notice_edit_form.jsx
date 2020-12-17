@@ -4,6 +4,7 @@ import Footer from "../footer/footer";
 import styles from "./notice_edit_form.module.css";
 import Button from "../button/button";
 import { useHistory, useLocation } from "react-router-dom";
+import CryptoJS from "crypto-js";
 
 function NoticeEditForm({ noticeRepository }) {
   const history = useHistory();
@@ -19,6 +20,10 @@ function NoticeEditForm({ noticeRepository }) {
 
   const [hidden, setHid] = useState("");
 
+  const decrypt = JSON.parse(
+    CryptoJS.AES.decrypt(password, "secret-key-1").toString(CryptoJS.enc.Utf8)
+  );
+
   const onChange = function (e) {
     setHid(e.target.value);
   };
@@ -31,7 +36,12 @@ function NoticeEditForm({ noticeRepository }) {
   };
 
   const onSubmit = (e) => {
-    if (pwdRef.current.value === password) {
+    const encrypt = CryptoJS.AES.encrypt(
+      JSON.stringify(pwdRef.current.value),
+      "secret-key-1"
+    ).toString();
+
+    if (pwdRef.current.value === decrypt) {
       e.preventDefault();
       const notice = {
         id: id,
@@ -39,7 +49,7 @@ function NoticeEditForm({ noticeRepository }) {
         title: titleRef.current.value || "",
         content: contentRef.current.value || "",
         date: date,
-        password: pwdRef.current.value || "",
+        password: encrypt || "",
         secret: hidden,
       };
 

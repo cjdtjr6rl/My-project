@@ -30,3 +30,7 @@
     width: 100%;
     margin: 4em 6em;
 }
+
+.login {
+    cursor: pointer;
+}

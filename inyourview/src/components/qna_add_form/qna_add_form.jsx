@@ -1,23 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import styles from "./notice_add_form.module.css";
+import styles from "./qna_add_form.module.css";
 import Button from "../button/button";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 import CryptoJS from "crypto-js";
 
-function NoticeAddForm({ noticeRepository }) {
+function QnaAddForm({ qnaRepository }) {
   const history = useHistory();
-  const [notices, setNotices] = useState({});
+  const [qnas, setQnas] = useState({});
 
   useEffect(() => {
-    const stopSync = noticeRepository.syncNotice((notices) => {
-      setNotices(notices);
+    const stopSync = qnaRepository.syncQna((qnas) => {
+      setQnas(qnas);
     });
     return () => stopSync();
-  }, [noticeRepository]);
-  const number = Object.keys(notices).length + 1;
+  }, [qnaRepository]);
+  const number = Object.keys(qnas).length + 1;
+  console.log(number);
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -38,7 +39,7 @@ function NoticeAddForm({ noticeRepository }) {
       JSON.stringify(pwdRef.current.value),
       "secret-key-1"
     ).toString();
-    const notice = {
+    const qna = {
       id: number,
       name: nameRef.current.value || "",
       title: titleRef.current.value || "",
@@ -49,19 +50,19 @@ function NoticeAddForm({ noticeRepository }) {
     };
 
     formRef.current.reset();
-    noticeRepository.saveNotice(notice);
-    history.push("/notice");
+    qnaRepository.saveQna(qna);
+    history.push("/qna");
   };
 
   const goBack = function () {
-    history.push("/notice");
+    history.push("/qna");
   };
 
   return (
-    <section className={styles.noticeadd}>
+    <section className={styles.qnaadd}>
       <Header />
       <article className={styles.hello}>
-        <h3 className={styles.title}>공지사항</h3>
+        <h3 className={styles.title}>QnA</h3>
         <form ref={formRef} className={styles.form}>
           <table className={styles.table}>
             <tbody className={styles.tbody}>
@@ -135,4 +136,4 @@ function NoticeAddForm({ noticeRepository }) {
   );
 }
 
-export default NoticeAddForm;
+export default QnaAddForm;

@@ -1,0 +1,59 @@
+.qnadetail {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin: 5em 0 !important;
+}
+
+.hello {
+    margin: 0 7em;
+    padding: 0;
+    overflow-y: auto;
+    flex: 1 1;
+    text-align: center;
+}
+
+.tablewrap {
+    display: flex;
+    width: 1200px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 10em auto;
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+}
+
+.tr {
+    border-bottom: 1px solid gray;
+}
+
+.th {
+    width: 10%;
+}
+
+.td {
+    padding: 8px 10px 7px;
+}
+
+.button {
+    float: left;
+}
+
+.input {
+  font-size: 0.8rem;
+  width: 20%;
+  border: 0;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+}
+
+.input:focus {
+  outline: 0;
+}

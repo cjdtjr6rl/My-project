@@ -1,0 +1,66 @@
+.qnaedit {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin: 5em 0 !important;
+}
+
+.hello {
+    margin: 0 7em;
+    padding: 0;
+    overflow-y: auto;
+    flex: 1 1;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    width: 1200px;
+    flex-wrap: wrap;
+    margin: 0 auto 6em;
+    justify-content: flex-end;
+}
+
+.input,
+.textarea {
+  font-size: 0.8rem;
+  width: 100%;
+  border: 0;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+}
+
+.input {
+  flex: 1 1;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: 0;
+}
+
+.textarea {
+  flex-basis: 100%;
+  height: 200px;
+  resize: none;
+}
+
+.table {
+    width: 100%;
+}
+
+.th {
+    width: 10%;
+}
+
+.td {
+    padding: 8px 10px 7px;
+}
+
+.radio {
+    float: left;
+}

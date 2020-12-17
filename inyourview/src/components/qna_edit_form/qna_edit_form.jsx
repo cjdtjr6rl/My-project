@@ -1,23 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import styles from "./notice_add_form.module.css";
+import styles from "./qna_edit_form.module.css";
 import Button from "../button/button";
-import { useHistory } from "react-router-dom";
-import moment from "moment";
+import { useHistory, useLocation } from "react-router-dom";
 import CryptoJS from "crypto-js";
 
-function NoticeAddForm({ noticeRepository }) {
+function QnaEditForm({ qnaRepository }) {
   const history = useHistory();
-  const [notices, setNotices] = useState({});
-
-  useEffect(() => {
-    const stopSync = noticeRepository.syncNotice((notices) => {
-      setNotices(notices);
-    });
-    return () => stopSync();
-  }, [noticeRepository]);
-  const number = Object.keys(notices).length + 1;
+  const data = useLocation();
+  const qnaData = data.state;
+  const { id, title, name, content, password, date } = qnaData;
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -27,38 +20,55 @@ function NoticeAddForm({ noticeRepository }) {
 
   const [hidden, setHid] = useState("");
 
+  const decrypt = JSON.parse(
+    CryptoJS.AES.decrypt(password, "secret-key-1").toString(CryptoJS.enc.Utf8)
+  );
+
   const onChange = function (e) {
     setHid(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onChang = function (e) {
+    if (e.currentTarget === null) {
+      return;
+    }
     e.preventDefault();
-    const date = Date.now();
+  };
+
+  const onSubmit = (e) => {
     const encrypt = CryptoJS.AES.encrypt(
       JSON.stringify(pwdRef.current.value),
       "secret-key-1"
     ).toString();
-    const notice = {
-      id: number,
-      name: nameRef.current.value || "",
-      title: titleRef.current.value || "",
-      content: contentRef.current.value || "",
-      date: moment(date).format("yyyy-MM-DD"),
-      password: encrypt || "",
-      secret: hidden,
-    };
 
-    formRef.current.reset();
-    noticeRepository.saveNotice(notice);
-    history.push("/notice");
+    if (pwdRef.current.value === decrypt) {
+      e.preventDefault();
+      const qna = {
+        id: id,
+        name: nameRef.current.value || "",
+        title: titleRef.current.value || "",
+        content: contentRef.current.value || "",
+        date: date,
+        password: encrypt || "",
+        secret: hidden,
+      };
+
+      formRef.current.reset();
+      qnaRepository.saveQna(qna);
+      history.push("/qna");
+    } else {
+      e.preventDefault();
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
   };
 
   const goBack = function () {
-    history.push("/notice");
+    history.push("/qna");
   };
 
   return (
-    <section className={styles.noticeadd}>
+    <section className={styles.qnaadd}>
       <Header />
       <article className={styles.hello}>
         <h3 className={styles.title}>공지사항</h3>
@@ -73,7 +83,8 @@ function NoticeAddForm({ noticeRepository }) {
                     className={styles.input}
                     type="text"
                     name="title"
-                    placeholder="제목을 입력하세요."
+                    defaultValue={title}
+                    onChange={onChang}
                   />
                 </td>
               </tr>
@@ -85,7 +96,8 @@ function NoticeAddForm({ noticeRepository }) {
                     className={styles.input}
                     type="text"
                     name="name"
-                    placeholder="이름을 입력하세요."
+                    defaultValue={name}
+                    onChange={onChang}
                   />
                 </td>
               </tr>
@@ -96,7 +108,8 @@ function NoticeAddForm({ noticeRepository }) {
                     ref={contentRef}
                     className={styles.textarea}
                     name="content"
-                    placeholder="내용을 입력하세요."
+                    defaultValue={content}
+                    onChange={onChang}
                   />
                 </td>
               </tr>
@@ -125,7 +138,7 @@ function NoticeAddForm({ noticeRepository }) {
               </tr>
             </tbody>
           </table>
-          <Button name="등록" onClick={onSubmit} />
+          <Button name="수정" onClick={onSubmit} />
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
@@ -135,4 +148,4 @@ function NoticeAddForm({ noticeRepository }) {
   );
 }
 
-export default NoticeAddForm;
+export default QnaEditForm;
