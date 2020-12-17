@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./login.module.css";
+import CryptoJS from "crypto-js";
 
 function Login({ loginRepository }) {
   const history = useHistory();
@@ -18,14 +19,14 @@ function Login({ loginRepository }) {
     return () => stopSync();
   }, [loginRepository]);
 
-  console.log(users.id, users.pwd);
-
   const onSubmit = function (e) {
     e.preventDefault();
-    if (
-      idRef.current.value === users.id &&
-      pwdRef.current.value === users.pwd
-    ) {
+    const decrypt = JSON.parse(
+      CryptoJS.AES.decrypt(users.pwd, "secret-key-1").toString(
+        CryptoJS.enc.Utf8
+      )
+    );
+    if (idRef.current.value === users.id && pwdRef.current.value === decrypt) {
       alert("로그인하였습니다.");
       history.push("/");
     } else {
