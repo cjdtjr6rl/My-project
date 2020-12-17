@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Icon, Menu, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import Button from "../button/button";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import NoticeList from "../notice_list/notice_list";
+import ReactPaginate from "react-paginate";
 import styles from "./notice.module.css";
+
+const PER_PAGE = 10;
 
 function Notice({ noticeRepository }) {
   const history = useHistory();
   const [notices, setNotices] = useState({});
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const stopSync = noticeRepository.syncNotice((notices) => {
@@ -22,6 +26,16 @@ function Notice({ noticeRepository }) {
     history.push("/noticeAdd");
   };
 
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+  }
+
+  const offset = currentPage * PER_PAGE;
+
+  const currentPageData = Object.keys(notices)
+    .slice(offset, offset + PER_PAGE)
+    .map((key) => <NoticeList key={key} notice={notices[key]} />);
+
   return (
     <section className={styles.notice}>
       <Header />
@@ -31,31 +45,36 @@ function Notice({ noticeRepository }) {
           <Table celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>번호</Table.HeaderCell>
-                <Table.HeaderCell>제목</Table.HeaderCell>
-                <Table.HeaderCell>작성자</Table.HeaderCell>
-                <Table.HeaderCell>작성일</Table.HeaderCell>
+                <Table.HeaderCell className={styles.tr1}>번호</Table.HeaderCell>
+                <Table.HeaderCell className={styles.tr2}>제목</Table.HeaderCell>
+                <Table.HeaderCell className={styles.tr3}>
+                  작성자
+                </Table.HeaderCell>
+                <Table.HeaderCell className={styles.tr4}>
+                  작성일
+                </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
-            <Table.Body>
-              {Object.keys(notices).map((key) => (
-                <NoticeList key={key} notice={notices[key]} />
-              ))}
-            </Table.Body>
+            <Table.Body>{currentPageData}</Table.Body>
 
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell colSpan="4">
-                  <Menu floated="right" pagination>
-                    <Menu.Item as="a" icon>
-                      <Icon name="chevron left" />
-                    </Menu.Item>
-                    <Menu.Item as="a">1</Menu.Item>
-                    <Menu.Item as="a" icon>
-                      <Icon name="chevron right" />
-                    </Menu.Item>
-                  </Menu>
+                  <ReactPaginate
+                    pageCount={Math.ceil(Object.keys(notices).length / 10)}
+                    pageRangeDisplayed={10}
+                    marginPagesDisplayed={0}
+                    breakLabel={""}
+                    previousLabel={"<"}
+                    nextLabel={">"}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    previousLinkClassName={styles.pagination__link}
+                    nextLinkClassName={styles.pagination__link}
+                    disabledClassName={styles.pagination__link_disabled}
+                    activeClassName={styles.pagination__link_active}
+                  />
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>

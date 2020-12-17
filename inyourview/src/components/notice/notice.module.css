@@ -17,6 +17,16 @@
     text-align: center;
 }
 
+.tr1 {
+    width: 10%;
+}
+.tr2 {
+    width: 50%;
+}
+.tr3, .tr4 {
+    width: 20%;
+}
+
 .table {
     width: 100%;
 }
@@ -25,3 +35,35 @@
     width: 1200px;
     margin: 10em auto;
 }
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    cursor: pointer;
+  }
+  
+  .pagination a {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #6e6f71;
+    color: #6e6f71;
+  }
+  
+  .pagination__link {
+    font-weight: bold;
+  }
+  
+  .pagination__link_active a {
+    color: #fff;
+    background: #6e6f71;
+  }
+  
+  .pagination__link_disabled a {
+    color: rgb(198, 197, 202);
+    border: 1px solid rgb(198, 197, 202);
+  }
+
+  li {
+      margin-left: 0.5em;
+  }

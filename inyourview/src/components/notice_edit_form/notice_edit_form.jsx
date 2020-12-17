@@ -18,7 +18,6 @@ function NoticeEditForm({ noticeRepository }) {
   const pwdRef = useRef();
 
   const [hidden, setHid] = useState("");
-  const [notices, setNotices] = useState({ noticeData });
 
   const onChange = function (e) {
     setHid(e.target.value);
@@ -29,8 +28,6 @@ function NoticeEditForm({ noticeRepository }) {
       return;
     }
     e.preventDefault();
-    // setNotices(...notices, ([e.currentTarget.name] = e.currentTarget.value));
-    console.log(notices);
   };
 
   const onSubmit = (e) => {
@@ -76,7 +73,7 @@ function NoticeEditForm({ noticeRepository }) {
                     className={styles.input}
                     type="text"
                     name="title"
-                    value={notices.title}
+                    defaultValue={title}
                     onChange={onChang}
                   />
                 </td>
@@ -89,7 +86,7 @@ function NoticeEditForm({ noticeRepository }) {
                     className={styles.input}
                     type="text"
                     name="name"
-                    value={notices.name}
+                    defaultValue={name}
                     onChange={onChang}
                   />
                 </td>
@@ -101,7 +98,7 @@ function NoticeEditForm({ noticeRepository }) {
                     ref={contentRef}
                     className={styles.textarea}
                     name="content"
-                    value={notices.content}
+                    defaultValue={content}
                     onChange={onChang}
                   />
                 </td>

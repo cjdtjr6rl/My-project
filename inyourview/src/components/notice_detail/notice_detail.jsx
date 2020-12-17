@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import Footer from "../footer/footer";
@@ -10,10 +10,13 @@ function NoticeDetail({ noticeRepository }) {
   const history = useHistory();
   const data = useLocation();
   const noticeData = data.state;
-  const { id, title, name, date, content } = noticeData;
+  const { id, title, name, date, content, password } = noticeData;
+
+  const pwdRef = useRef();
 
   const goBack = function () {
-    history.push("/notice");
+    // history.push("/notice");
+    history.goBack();
   };
 
   const goEdit = function () {
@@ -22,8 +25,13 @@ function NoticeDetail({ noticeRepository }) {
 
   const deleteNotice = () => {
     if (window.confirm("삭제 하시겠습니까?")) {
-      noticeRepository.removeNotice(id);
-      history.push("/notice");
+      if (pwdRef.current.value === password) {
+        noticeRepository.removeNotice(id);
+        history.push("/notice");
+      } else {
+        alert("비밀번호가 일치하지 않습니다.");
+        return;
+      }
     } else {
       return false;
     }
@@ -68,6 +76,17 @@ function NoticeDetail({ noticeRepository }) {
                       );
                     })}
                   </p>
+                </td>
+              </tr>
+              <tr className={styles.tr}>
+                <th className={styles.th}>비밀번호</th>
+                <td className={styles.td}>
+                  <input
+                    ref={pwdRef}
+                    className={styles.input}
+                    type="password"
+                    name="password"
+                  />
                 </td>
               </tr>
             </tbody>
