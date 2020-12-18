@@ -7,9 +7,17 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 import CryptoJS from "crypto-js";
 
-function NoticeAddForm({ noticeRepository }) {
+function NoticeAddForm({ noticeRepository, loginRepository }) {
   const history = useHistory();
   const [notices, setNotices] = useState({});
+  const [users, setUsers] = useState({});
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
 
   useEffect(() => {
     const stopSync = noticeRepository.syncNotice((notices) => {
@@ -130,7 +138,7 @@ function NoticeAddForm({ noticeRepository }) {
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

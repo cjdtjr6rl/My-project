@@ -91,7 +91,7 @@ function Notice({ noticeRepository, loginRepository }) {
             <Button name="글쓰기" onClick={onClick} />
           )}
         </div>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

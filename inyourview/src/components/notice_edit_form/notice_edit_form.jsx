@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from "./notice_edit_form.module.css";
@@ -6,11 +6,19 @@ import Button from "../button/button";
 import { useHistory, useLocation } from "react-router-dom";
 import CryptoJS from "crypto-js";
 
-function NoticeEditForm({ noticeRepository }) {
+function NoticeEditForm({ noticeRepository, loginRepository }) {
   const history = useHistory();
   const data = useLocation();
   const noticeData = data.state;
   const { index, id, title, name, content, password, date } = noticeData;
+  const [users, setUsers] = useState({});
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -143,7 +151,7 @@ function NoticeEditForm({ noticeRepository }) {
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

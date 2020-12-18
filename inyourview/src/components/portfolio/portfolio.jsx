@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./portfolio.module.css";
 import Slide from "react-reveal/Slide";
 
-function Portfolio(props) {
+function Portfolio({ loginRepository }) {
+  const [users, setUsers] = useState({});
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
   return (
     <section className={styles.portfolio}>
       <Header />
@@ -45,7 +53,7 @@ function Portfolio(props) {
             alt="In Your View Logo"
           />
         </Slide>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

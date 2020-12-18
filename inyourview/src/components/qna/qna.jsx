@@ -10,10 +10,18 @@ import styles from "./qna.module.css";
 
 const PER_PAGE = 10;
 
-function Qna({ qnaRepository }) {
+function Qna({ qnaRepository, loginRepository }) {
   const history = useHistory();
   const [qnas, setQnas] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
+  const [users, setUsers] = useState({});
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
 
   useEffect(() => {
     const stopSync = qnaRepository.syncQna((qnas) => {
@@ -81,7 +89,7 @@ function Qna({ qnaRepository }) {
           </Table>
           <Button name="글쓰기" onClick={onClick} />
         </div>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

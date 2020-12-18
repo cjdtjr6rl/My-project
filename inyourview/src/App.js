@@ -59,13 +59,13 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             <Login loginRepository={loginRepository} />
           </Route>
           <Route path="/intro">
-            <Intro />
+            <Intro loginRepository={loginRepository} />
           </Route>
           <Route path="/portfolio">
-            <Portfolio />
+            <Portfolio loginRepository={loginRepository} />
           </Route>
           <Route path="/way">
-            <Way />
+            <Way loginRepository={loginRepository} />
           </Route>
           <Route path="/notice">
             <Notice
@@ -74,25 +74,46 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             />
           </Route>
           <Route path="/noticeAdd">
-            <NoticeAddForm noticeRepository={noticeRepository} />
+            <NoticeAddForm
+              noticeRepository={noticeRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/noticeDetail">
-            <NoticeDetail noticeRepository={noticeRepository} />
+            <NoticeDetail
+              noticeRepository={noticeRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/noticeEdit">
-            <NoticeEditForm noticeRepository={noticeRepository} />
+            <NoticeEditForm
+              noticeRepository={noticeRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/qna">
-            <Qna qnaRepository={qnaRepository} />
+            <Qna
+              qnaRepository={qnaRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/qnaAdd">
-            <QnaAddForm qnaRepository={qnaRepository} />
+            <QnaAddForm
+              qnaRepository={qnaRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/qnaDetail">
-            <QnaDetail qnaRepository={qnaRepository} />
+            <QnaDetail
+              qnaRepository={qnaRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/qnaEdit">
-            <QnaEditForm qnaRepository={qnaRepository} />
+            <QnaEditForm
+              qnaRepository={qnaRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

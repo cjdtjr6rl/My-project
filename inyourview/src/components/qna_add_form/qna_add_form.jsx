@@ -7,9 +7,17 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 import CryptoJS from "crypto-js";
 
-function QnaAddForm({ qnaRepository }) {
+function QnaAddForm({ qnaRepository, loginRepository }) {
   const history = useHistory();
   const [qnas, setQnas] = useState({});
+  const [users, setUsers] = useState({});
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
 
   useEffect(() => {
     const stopSync = qnaRepository.syncQna((qnas) => {
@@ -130,7 +138,7 @@ function QnaAddForm({ qnaRepository }) {
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

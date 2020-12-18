@@ -1,18 +1,27 @@
 import React from "react";
 import { useHistory } from "react-router";
+import LoginRepository from "../../service/login_repository";
 import styles from "./footer.module.css";
 
-function Footer(props) {
+function Footer({ users }) {
+  const loginRepository = new LoginRepository();
   const history = useHistory();
 
   const goLogin = function () {
     history.push("/login");
-    // const return_value = prompt("비밀번호를 입력하세요.");
-    // if (return_value === password) {
-    //   history.push(`/`, qna);
-    // } else {
-    //   return false;
-    // }
+  };
+
+  const goLogOut = function (e) {
+    e.preventDefault();
+    const user = {
+      auth: users.auth,
+      id: users.id,
+      pwd: users.pwd,
+      login: "logout",
+      name: users.name,
+    };
+    loginRepository.saveLogin(user);
+    history.push("/");
   };
 
   return (
@@ -60,7 +69,11 @@ function Footer(props) {
               <span>Follow us</span>
             </li>
             <li className={styles.login}>
-              <span onClick={goLogin}>Log In</span>
+              {users.login === "login" ? (
+                <span onClick={goLogOut}>Log Out</span>
+              ) : (
+                <span onClick={goLogin}>Log In</span>
+              )}
             </li>
           </ul>
         </section>

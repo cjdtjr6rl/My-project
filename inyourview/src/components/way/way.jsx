@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Mapping from "../map/map";
-import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./way.module.css";
 
@@ -24,7 +23,6 @@ class Way extends Component {
             <p>KAKAO: 인유여뷰</p>
             <p>e-MAIL: inyourviewpr@gmail.com</p>
           </span>
-          <Footer />
         </article>
       </section>
     );

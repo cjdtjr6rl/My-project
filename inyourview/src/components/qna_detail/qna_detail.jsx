@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import Footer from "../footer/footer";
@@ -7,11 +7,19 @@ import styles from "./qna_detail.module.css";
 import { useLocation } from "react-router";
 import CryptoJS from "crypto-js";
 
-function QnaDetail({ qnaRepository }) {
+function QnaDetail({ qnaRepository, loginRepository }) {
   const history = useHistory();
   const data = useLocation();
   const qnaData = data.state;
   const { id, title, name, date, content, password } = qnaData;
+  const [users, setUsers] = useState({});
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
 
   const pwdRef = useRef();
 
@@ -101,7 +109,7 @@ function QnaDetail({ qnaRepository }) {
           &nbsp;
           <Button name="삭제" onClick={deleteQna} />
         </div>
-        <Footer />
+        <Footer users={users} />
       </article>
     </section>
   );

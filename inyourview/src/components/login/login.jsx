@@ -58,7 +58,7 @@ function Login({ loginRepository }) {
           <button onClick={onSubmit}>로그인</button>
         </form>
       </article>
-      <Footer />
+      <Footer users={users} />
     </section>
   );
 }
