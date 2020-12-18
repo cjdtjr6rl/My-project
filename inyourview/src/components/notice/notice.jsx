@@ -10,10 +10,11 @@ import styles from "./notice.module.css";
 
 const PER_PAGE = 10;
 
-function Notice({ noticeRepository }) {
+function Notice({ noticeRepository, loginRepository }) {
   const history = useHistory();
   const [notices, setNotices] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
+  const [users, setUsers] = useState({});
 
   useEffect(() => {
     const stopSync = noticeRepository.syncNotice((notices) => {
@@ -21,6 +22,13 @@ function Notice({ noticeRepository }) {
     });
     return () => stopSync();
   }, [noticeRepository]);
+
+  useEffect(() => {
+    const stopSync = loginRepository.syncLogin((users) => {
+      setUsers(users);
+    });
+    return () => stopSync();
+  }, [loginRepository]);
 
   const onClick = function () {
     history.push("/noticeAdd");
@@ -79,7 +87,9 @@ function Notice({ noticeRepository }) {
               </Table.Row>
             </Table.Footer>
           </Table>
-          <Button name="글쓰기" onClick={onClick} />
+          {users.login === "login" && (
+            <Button name="글쓰기" onClick={onClick} />
+          )}
         </div>
         <Footer />
       </article>

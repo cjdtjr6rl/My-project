@@ -2,7 +2,7 @@ import { firebaseDatabase } from "./firebase";
 
 class LoginRepository {
   syncLogin(onUpdate) {
-    const ref = firebaseDatabase.ref(`user`);
+    const ref = firebaseDatabase.ref(`user/1`);
     ref.on("value", (snapshot) => {
       const value = snapshot.val();
       value && onUpdate(value);
@@ -10,9 +10,9 @@ class LoginRepository {
     return () => ref.off();
   }
 
-  //   saveQna(qna) {
-  //     firebaseDatabase.ref(`Qna/${qna.id}`).set(qna);
-  //   }
+  saveLogin(user) {
+    firebaseDatabase.ref(`user/${user.auth}`).set(user);
+  }
 
   //   removeQna(id) {
   //     firebaseDatabase.ref(`Qna/${id}`).remove();

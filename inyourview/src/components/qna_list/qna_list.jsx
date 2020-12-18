@@ -6,7 +6,7 @@ import CryptoJS from "crypto-js";
 
 function QnaList({ qna }) {
   const history = useHistory();
-  const { id, title, name, date, secret, password } = qna;
+  const { index, id, title, name, date, secret, password } = qna;
 
   const goDetail = function () {
     history.push(`/qnaDetail/${id}`, qna);
@@ -29,7 +29,7 @@ function QnaList({ qna }) {
       {secret === "common" ? (
         <Table.Row>
           <Table.Cell>
-            <Label ribbon>{id}</Label>
+            <Label ribbon>{index}</Label>
           </Table.Cell>
           <Table.Cell>
             <p className={styles.detail} onClick={goDetail}>
@@ -42,7 +42,7 @@ function QnaList({ qna }) {
       ) : (
         <Table.Row>
           <Table.Cell>
-            <Label ribbon>{id}</Label>
+            <Label ribbon>{index}</Label>
           </Table.Cell>
           <Table.Cell>
             <p className={styles.detail} onClick={goDetail2}>

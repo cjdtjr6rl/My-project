@@ -18,7 +18,6 @@ function QnaAddForm({ qnaRepository }) {
     return () => stopSync();
   }, [qnaRepository]);
   const number = Object.keys(qnas).length + 1;
-  console.log(number);
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -40,7 +39,8 @@ function QnaAddForm({ qnaRepository }) {
       "secret-key-1"
     ).toString();
     const qna = {
-      id: number,
+      id: date,
+      index: number,
       name: nameRef.current.value || "",
       title: titleRef.current.value || "",
       content: contentRef.current.value || "",

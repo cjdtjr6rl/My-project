@@ -68,7 +68,10 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             <Way />
           </Route>
           <Route path="/notice">
-            <Notice noticeRepository={noticeRepository} />
+            <Notice
+              noticeRepository={noticeRepository}
+              loginRepository={loginRepository}
+            />
           </Route>
           <Route path="/noticeAdd">
             <NoticeAddForm noticeRepository={noticeRepository} />

@@ -39,7 +39,8 @@ function NoticeAddForm({ noticeRepository }) {
       "secret-key-1"
     ).toString();
     const notice = {
-      id: number,
+      id: date,
+      index: number,
       name: nameRef.current.value || "",
       title: titleRef.current.value || "",
       content: contentRef.current.value || "",

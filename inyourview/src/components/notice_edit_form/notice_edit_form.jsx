@@ -10,7 +10,7 @@ function NoticeEditForm({ noticeRepository }) {
   const history = useHistory();
   const data = useLocation();
   const noticeData = data.state;
-  const { id, title, name, content, password, date } = noticeData;
+  const { index, id, title, name, content, password, date } = noticeData;
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -45,6 +45,7 @@ function NoticeEditForm({ noticeRepository }) {
       e.preventDefault();
       const notice = {
         id: id,
+        index: index,
         name: nameRef.current.value || "",
         title: titleRef.current.value || "",
         content: contentRef.current.value || "",

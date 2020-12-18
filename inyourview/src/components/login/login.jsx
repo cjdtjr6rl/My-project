@@ -21,6 +21,13 @@ function Login({ loginRepository }) {
 
   const onSubmit = function (e) {
     e.preventDefault();
+    const user = {
+      auth: users.auth,
+      id: users.id,
+      pwd: users.pwd,
+      login: "login",
+      name: users.name,
+    };
     const decrypt = JSON.parse(
       CryptoJS.AES.decrypt(users.pwd, "secret-key-1").toString(
         CryptoJS.enc.Utf8
@@ -28,6 +35,7 @@ function Login({ loginRepository }) {
     );
     if (idRef.current.value === users.id && pwdRef.current.value === decrypt) {
       alert("로그인하였습니다.");
+      loginRepository.saveLogin(user);
       history.push("/");
     } else {
       alert("아이디와 비밀번호를 다시 확인해주세요.");

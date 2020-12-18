@@ -10,7 +10,7 @@ function QnaEditForm({ qnaRepository }) {
   const history = useHistory();
   const data = useLocation();
   const qnaData = data.state;
-  const { id, title, name, content, password, date } = qnaData;
+  const { index, id, title, name, content, password, date } = qnaData;
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -45,6 +45,7 @@ function QnaEditForm({ qnaRepository }) {
       e.preventDefault();
       const qna = {
         id: id,
+        index: index,
         name: nameRef.current.value || "",
         title: titleRef.current.value || "",
         content: contentRef.current.value || "",

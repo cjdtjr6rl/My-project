@@ -5,7 +5,7 @@ import styles from "./notice_list.module.css";
 
 function NoticeList({ notice }) {
   const history = useHistory();
-  const { id, title, name, date } = notice;
+  const { id, index, title, name, date } = notice;
 
   const goDetail = function () {
     history.push(`/noticeDetail/${id}`, notice);
@@ -15,7 +15,7 @@ function NoticeList({ notice }) {
     <>
       <Table.Row>
         <Table.Cell>
-          <Label ribbon>{id}</Label>
+          <Label ribbon>{index}</Label>
         </Table.Cell>
         <Table.Cell>
           <p className={styles.detail} onClick={goDetail}>
