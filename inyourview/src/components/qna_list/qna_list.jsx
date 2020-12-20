@@ -4,7 +4,7 @@ import { Label, Table } from "semantic-ui-react";
 import styles from "./qna_list.module.css";
 import CryptoJS from "crypto-js";
 
-function QnaList({ qna }) {
+function QnaList({ qna, login }) {
   const history = useHistory();
   const { index, id, title, name, date, secret, password } = qna;
 
@@ -22,6 +22,10 @@ function QnaList({ qna }) {
     } else {
       return false;
     }
+  };
+
+  const goDetail3 = function () {
+    history.push(`/qnaDetail/${id}`, qna);
   };
 
   return (
@@ -45,9 +49,15 @@ function QnaList({ qna }) {
             <Label ribbon>{index}</Label>
           </Table.Cell>
           <Table.Cell>
-            <p className={styles.detail} onClick={goDetail2}>
-              {title}🔒
-            </p>
+            {login === "login" ? (
+              <p className={styles.detail} onClick={goDetail3}>
+                {title}🔒
+              </p>
+            ) : (
+              <p className={styles.detail} onClick={goDetail2}>
+                {title}🔒
+              </p>
+            )}
           </Table.Cell>
           <Table.Cell>{name}</Table.Cell>
           <Table.Cell>{date}</Table.Cell>

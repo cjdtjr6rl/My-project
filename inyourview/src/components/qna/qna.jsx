@@ -42,7 +42,7 @@ function Qna({ qnaRepository, loginRepository }) {
 
   const currentPageData = Object.keys(qnas)
     .slice(offset, offset + PER_PAGE)
-    .map((key) => <QnaList key={key} qna={qnas[key]} />);
+    .map((key) => <QnaList key={key} qna={qnas[key]} login={users.login} />);
 
   return (
     <section className={styles.qna}>

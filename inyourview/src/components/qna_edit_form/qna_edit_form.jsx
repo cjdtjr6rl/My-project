@@ -77,7 +77,7 @@ function QnaEditForm({ qnaRepository, loginRepository }) {
   };
 
   return (
-    <section className={styles.qnaadd}>
+    <section className={styles.qnaedit}>
       <Header />
       <article className={styles.hello}>
         <h3 className={styles.title}>공지사항</h3>

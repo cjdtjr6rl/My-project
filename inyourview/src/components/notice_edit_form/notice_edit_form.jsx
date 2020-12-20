@@ -77,7 +77,7 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
   };
 
   return (
-    <section className={styles.noticeadd}>
+    <section className={styles.noticeedit}>
       <Header />
       <article className={styles.hello}>
         <h3 className={styles.title}>공지사항</h3>

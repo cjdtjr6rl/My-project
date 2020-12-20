@@ -50,7 +50,7 @@ function QnaDetail({ qnaRepository, loginRepository }) {
   };
 
   return (
-    <section className={styles.qnaetail}>
+    <section className={styles.qnadetail}>
       <Header />
       <article className={styles.hello}>
         <h3 className={styles.title}>QnA</h3>
