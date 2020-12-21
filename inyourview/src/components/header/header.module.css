@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .header {
   padding: 1rem 10rem;
   height: 5em;
@@ -62,4 +64,14 @@
 
 .btn {
     font-size: 0.7rem;
+}
+
+@media screen and (max-width: mobileQuery) {
+  .header {
+    padding: 1rem 4rem;
+  }
+
+  .btn {
+    font-size: 0.5rem;
+  }
 }

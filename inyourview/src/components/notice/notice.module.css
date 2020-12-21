@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .notice {
     height: 100%;
     width: 100%;
@@ -41,29 +43,45 @@
     justify-content: flex-end;
     list-style: none;
     cursor: pointer;
-  }
-  
-  .pagination a {
+}
+
+.pagination a {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #6e6f71;
     color: #6e6f71;
-  }
-  
-  .pagination__link {
+}
+
+.pagination__link {
     font-weight: bold;
-  }
-  
-  .pagination__link_active a {
+}
+
+.pagination__link_active a {
     color: #fff;
     background: #6e6f71;
-  }
-  
-  .pagination__link_disabled a {
+}
+
+.pagination__link_disabled a {
     color: rgb(198, 197, 202);
     border: 1px solid rgb(198, 197, 202);
-  }
+}
 
-  li {
-      margin-left: 0.5em;
-  }
+li {
+    margin-left: 0.5em;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .title {
+        margin: 3em 0 !important;
+        font-size: 15px;
+    }
+
+    .hello {
+        margin: 0;
+    }
+
+    .tablewrap {
+        width: 90%;
+        margin: 5em auto 10em;
+    }
+}

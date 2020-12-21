@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .way {
     height: 100%;
     width: 100%;
@@ -43,4 +45,27 @@
 .info {
     display: block;
     margin: 6em 0;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .title {
+        margin: 3em 0 !important;
+        font-size: 15px;
+    }
+
+    .hello, .map, .left, .right {
+        margin: 0;
+    }
+
+    .map {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .info {
+        margin: 24em 0 6em 0;
+    }
 }

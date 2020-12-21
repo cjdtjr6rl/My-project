@@ -7,6 +7,7 @@ import Header from "../header/header";
 import NoticeList from "../notice_list/notice_list";
 import ReactPaginate from "react-paginate";
 import styles from "./notice.module.css";
+import { useMediaQuery } from "react-responsive";
 
 const PER_PAGE = 10;
 
@@ -44,6 +45,8 @@ function Notice({ noticeRepository, loginRepository }) {
     .slice(offset, offset + PER_PAGE)
     .map((key) => <NoticeList key={key} notice={notices[key]} />);
 
+  const isSmallScreen = useMediaQuery({ query: "(min-device-width: 27.5rem)" });
+
   return (
     <section className={styles.notice}>
       <Header />
@@ -51,18 +54,24 @@ function Notice({ noticeRepository, loginRepository }) {
         <h3 className={styles.title}>공지사항</h3>
         <div className={styles.tablewrap}>
           <Table celled>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell className={styles.tr1}>번호</Table.HeaderCell>
-                <Table.HeaderCell className={styles.tr2}>제목</Table.HeaderCell>
-                <Table.HeaderCell className={styles.tr3}>
-                  작성자
-                </Table.HeaderCell>
-                <Table.HeaderCell className={styles.tr4}>
-                  작성일
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
+            {isSmallScreen && (
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell className={styles.tr1}>
+                    번호
+                  </Table.HeaderCell>
+                  <Table.HeaderCell className={styles.tr2}>
+                    제목
+                  </Table.HeaderCell>
+                  <Table.HeaderCell className={styles.tr3}>
+                    작성자
+                  </Table.HeaderCell>
+                  <Table.HeaderCell className={styles.tr4}>
+                    작성일
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+            )}
 
             <Table.Body>{currentPageData}</Table.Body>
 

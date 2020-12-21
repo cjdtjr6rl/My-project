@@ -77,6 +77,12 @@ function Footer({ users }) {
             </li>
           </ul>
         </section>
+        <span className={styles.copyright}>
+          Copyright (C) 2020 <strong>IN YOUR VIEW</strong> all rights reserved{" "}
+          <a className={styles.github} href="https://github.com/cjdtjr6rl">
+            Junnna
+          </a>
+        </span>
       </div>
     </footer>
   );

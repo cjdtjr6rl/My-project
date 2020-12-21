@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .footer {
     width: 100%;
     border-top: 2px solid lightgray;
@@ -16,6 +18,7 @@
 .content {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2em;
 }
 
 .textlogo {
@@ -33,4 +36,22 @@
 
 .login {
     cursor: pointer;
+}
+
+.github {
+    color: #adadad;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .foot {
+        margin: 0 2em;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+
+    .ul, .copyright {
+        font-size: 10px;
+    }
 }

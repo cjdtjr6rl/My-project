@@ -2,3 +2,7 @@
     cursor: pointer;
     display: contents;
 }
+
+.inline {
+    padding: .25em .75em;
+}

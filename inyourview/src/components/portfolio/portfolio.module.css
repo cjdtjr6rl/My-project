@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .portfolio {
     height: 100%;
     width: 100%;
@@ -29,4 +31,15 @@
 
 .right {
     float: right;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .title {
+        margin: 3em 0 !important;
+        font-size: 15px;
+    }
+
+    .hello {
+        margin: 0;
+    }
 }
