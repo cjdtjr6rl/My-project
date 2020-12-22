@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .login {
     height: 100%;
     width: 100%;
@@ -16,3 +18,48 @@
     flex: 1 1;
     text-align: center;
 }
+
+.input{
+  font-size: 0.8rem;
+  width: 50%;
+  border: 0;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+}
+
+.input {
+  flex: 1 1;
+}
+
+.input:focus{
+  outline: 0;
+}
+
+.button {
+    padding: 12px 25px 15px 25px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Nanum Gothic,'Nanum Gothic',sans-serif;
+    background: #555555;
+    border: 1px solid #555555;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .title {
+        margin: 3em 0 !important;
+        font-size: 15px;
+    }
+  
+    .hello {
+        margin: 0;
+    }
+    
+    .button {
+        padding: 0 10px;
+        font-size: 11px;
+        font-weight: 400;
+        height: 28px;
+    }
+  }

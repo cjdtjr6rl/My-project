@@ -12,8 +12,8 @@ function NoticeList({ notice }) {
     history.push(`/noticeDetail/${id}`, notice);
   };
 
-  const isSmallScreen = useMediaQuery({ query: "(min-device-width: 27.5rem)" });
-  const isBigScreen = useMediaQuery({ query: "(max-device-width: 27.5rem)" });
+  const isBigScreen = useMediaQuery({ query: "(min-device-width: 27.5rem)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-device-width: 27.5rem)" });
 
   return (
     <>
@@ -26,13 +26,13 @@ function NoticeList({ notice }) {
             {title}
           </p>
         </Table.Cell>
-        {isSmallScreen && (
+        {isBigScreen && (
           <>
             <Table.Cell>{name}</Table.Cell>
             <Table.Cell>{date}</Table.Cell>
           </>
         )}
-        {isBigScreen && (
+        {isSmallScreen && (
           <>
             <span className={styles.inline}>{name}</span>
             <span className={styles.inline}>{date}</span>

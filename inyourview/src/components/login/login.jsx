@@ -48,17 +48,28 @@ function Login({ loginRepository }) {
       <article className={styles.hello}>
         <h3 className={styles.title}>Login</h3>
         <form ref={formRef}>
-          <span>
-            아이디: <input ref={idRef} type="text" placeholder="아이디" />
-          </span>
-          <span>
-            비밀번호:{" "}
-            <input ref={pwdRef} type="password" placeholder="비밀번호" />
-          </span>
-          <button onClick={onSubmit}>로그인</button>
+          <p>
+            <input
+              className={styles.input}
+              ref={idRef}
+              type="text"
+              placeholder="아이디"
+            />
+          </p>
+          <p>
+            <input
+              className={styles.input}
+              ref={pwdRef}
+              type="password"
+              placeholder="비밀번호"
+            />
+          </p>
+          <button className={styles.button} onClick={onSubmit}>
+            로그인
+          </button>
         </form>
+        <Footer users={users} />
       </article>
-      <Footer users={users} />
     </section>
   );
 }

@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .noticeedit {
     height: 100%;
     width: 100%;
@@ -51,6 +53,7 @@
 
 .table {
     width: 100%;
+    margin-bottom: 1em;
 }
 
 .th {
@@ -63,4 +66,25 @@
 
 .radio {
     float: left;
+}
+
+@media screen and (max-width: mobileQuery) {
+  .title {
+      margin: 3em 0 !important;
+      font-size: 15px;
+  }
+
+  .hello {
+      margin: 0;
+  }
+
+  .form {
+      width: 90%;
+      margin: 5em auto 10em;
+  }
+  
+  .th {
+    width: 15%;
+    font-size: 10px;
+  }
 }

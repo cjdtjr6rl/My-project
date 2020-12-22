@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Label, Table } from "semantic-ui-react";
 import styles from "./qna_list.module.css";
 import CryptoJS from "crypto-js";
+import { useMediaQuery } from "react-responsive";
 
 function QnaList({ qna, login }) {
   const history = useHistory();
@@ -27,6 +28,9 @@ function QnaList({ qna, login }) {
   const goDetail3 = function () {
     history.push(`/qnaDetail/${id}`, qna);
   };
+
+  const isBigScreen = useMediaQuery({ query: "(min-device-width: 27.5rem)" });
+  const isSmallScreen = useMediaQuery({ query: "(max-device-width: 27.5rem)" });
 
   return (
     <>
@@ -59,8 +63,18 @@ function QnaList({ qna, login }) {
               </p>
             )}
           </Table.Cell>
-          <Table.Cell>{name}</Table.Cell>
-          <Table.Cell>{date}</Table.Cell>
+          {isBigScreen && (
+            <>
+              <Table.Cell>{name}</Table.Cell>
+              <Table.Cell>{date}</Table.Cell>
+            </>
+          )}
+          {isSmallScreen && (
+            <>
+              <span className={styles.inline}>{name}</span>
+              <span className={styles.inline}>{date}</span>
+            </>
+          )}
         </Table.Row>
       )}
     </>

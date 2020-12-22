@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .qnadetail {
     height: 100%;
     width: 100%;
@@ -28,6 +30,7 @@
 .table {
     width: 100%;
     text-align: left;
+    margin-bottom: 1em;
 }
 
 .tr {
@@ -56,4 +59,24 @@
 
 .input:focus {
   outline: 0;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .title {
+        margin: 3em 0 !important;
+        font-size: 15px;
+    }
+
+    .hello {
+        margin: 0;
+    }
+
+    .tablewrap {
+        width: 90%;
+        margin: 5em auto 10em;
+    }
+
+    .td {
+        width: 100%;
+    }
 }

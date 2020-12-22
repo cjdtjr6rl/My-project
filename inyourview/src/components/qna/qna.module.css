@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .qna {
     height: 100%;
     width: 100%;
@@ -67,3 +69,19 @@
   li {
       margin-left: 0.5em;
   }
+
+  @media screen and (max-width: mobileQuery) {
+    .title {
+        margin: 3em 0 !important;
+        font-size: 15px;
+    }
+
+    .hello {
+        margin: 0;
+    }
+
+    .tablewrap {
+        width: 90%;
+        margin: 5em auto 10em;
+    }
+}
