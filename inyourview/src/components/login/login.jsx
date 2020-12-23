@@ -47,7 +47,7 @@ function Login({ loginRepository }) {
       <Header />
       <article className={styles.hello}>
         <h3 className={styles.title}>Login</h3>
-        <form ref={formRef}>
+        <form ref={formRef} className={styles.form}>
           <p>
             <input
               className={styles.input}

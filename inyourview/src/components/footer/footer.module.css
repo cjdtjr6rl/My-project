@@ -55,3 +55,9 @@
         font-size: 10px;
     }
 }
+
+@media screen and (max-width: 1408px) {
+    .ul, .copyright {
+        font-size: 12px;
+    }
+  }

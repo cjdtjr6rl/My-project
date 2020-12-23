@@ -71,12 +71,14 @@
         margin: 0;
     }
 
+    .td {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1408px) {
     .tablewrap {
         width: 90%;
         margin: 5em auto 10em;
-    }
-
-    .td {
-        width: 100%;
     }
 }

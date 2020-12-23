@@ -46,6 +46,10 @@
     cursor: pointer;
 }
 
+.form {
+    margin: 5em auto 10em;
+}
+
 @media screen and (max-width: mobileQuery) {
     .title {
         margin: 3em 0 !important;

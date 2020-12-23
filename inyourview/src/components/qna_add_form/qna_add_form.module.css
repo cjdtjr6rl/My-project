@@ -76,14 +76,16 @@
   .hello {
       margin: 0;
   }
-
-  .form {
-      width: 90%;
-      margin: 5em auto 10em;
-  }
   
   .th {
     width: 15%;
     font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1408px) {
+  .form {
+      width: 90%;
+      margin: 5em auto 10em;
   }
 }
