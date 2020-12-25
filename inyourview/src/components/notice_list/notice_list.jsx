@@ -28,8 +28,12 @@ function NoticeList({ notice }) {
         </Table.Cell>
         {isBigScreen && (
           <>
-            <Table.Cell>{name}</Table.Cell>
-            <Table.Cell>{date}</Table.Cell>
+            <Table.Cell>
+              <p className={styles.content}>{name}</p>
+            </Table.Cell>
+            <Table.Cell>
+              <p className={styles.content}>{date}</p>
+            </Table.Cell>
           </>
         )}
         {isSmallScreen && (

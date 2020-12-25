@@ -44,8 +44,22 @@ function QnaList({ qna, login }) {
               {title}
             </p>
           </Table.Cell>
-          <Table.Cell>{name}</Table.Cell>
-          <Table.Cell>{date}</Table.Cell>
+          {isBigScreen && (
+            <>
+              <Table.Cell>
+                <p className={styles.content}>{name}</p>
+              </Table.Cell>
+              <Table.Cell>
+                <p className={styles.content}>{date}</p>
+              </Table.Cell>
+            </>
+          )}
+          {isSmallScreen && (
+            <>
+              <span className={styles.inline}>{name}</span>
+              <span className={styles.inline}>{date}</span>
+            </>
+          )}
         </Table.Row>
       ) : (
         <Table.Row>
@@ -65,8 +79,12 @@ function QnaList({ qna, login }) {
           </Table.Cell>
           {isBigScreen && (
             <>
-              <Table.Cell>{name}</Table.Cell>
-              <Table.Cell>{date}</Table.Cell>
+              <Table.Cell>
+                <p className={styles.content}>{name}</p>
+              </Table.Cell>
+              <Table.Cell>
+                <p className={styles.content}>{date}</p>
+              </Table.Cell>
             </>
           )}
           {isSmallScreen && (

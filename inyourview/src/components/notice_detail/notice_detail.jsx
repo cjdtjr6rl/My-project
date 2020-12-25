@@ -119,12 +119,8 @@ function NoticeDetail({ noticeRepository, loginRepository }) {
                 </tr>
                 <tr className={styles.tr}>
                   <td className={styles.td}>
-                    <p>{name}</p>
-                  </td>
-                </tr>
-                <tr className={styles.tr}>
-                  <td className={styles.td}>
-                    <p>{date}</p>
+                    <span className={styles.inline}>{name}</span>
+                    <span className={styles.inline}>{date}</span>
                   </td>
                 </tr>
                 <tr className={styles.tr}>

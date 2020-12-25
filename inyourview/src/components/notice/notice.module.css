@@ -79,6 +79,14 @@ li {
     .hello {
         margin: 0;
     }
+
+    .pagination a {
+        padding: 6px;
+    }
+
+    .pagination {
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 1408px) {

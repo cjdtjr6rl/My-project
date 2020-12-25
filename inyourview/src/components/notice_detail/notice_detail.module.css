@@ -61,6 +61,17 @@
   outline: 0;
 }
 
+.inline {
+    padding: 0 .75em;
+    border-right: .6px solid gray;
+}
+.inline:first-child {
+    padding-left: 0;
+}
+.inline:last-child {
+    border: 0;
+}
+
 @media screen and (max-width: mobileQuery) {
     .title {
         margin: 3em 0 !important;
@@ -69,6 +80,10 @@
 
     .hello {
         margin: 0;
+    }
+
+    .td {
+        font-size: 12px;
     }
 }
 

@@ -1,3 +1,5 @@
+@value mobileQuery from '../../common/size.css';
+
 .detail {
     cursor: pointer;
     display: contents;
@@ -5,4 +7,10 @@
 
 .inline {
     padding: .25em .75em;
+}
+
+@media screen and (max-width: mobileQuery) {
+    .content, .detail, .inline {
+        font-size: 12px;
+    }
 }
