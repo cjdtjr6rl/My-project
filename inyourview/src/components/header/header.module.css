@@ -68,7 +68,7 @@
 
 @media screen and (max-width: mobileQuery) {
   .header {
-    padding: 1rem 3rem;
+    padding: 1rem 3rem !important;
   }
 
   .btn {
@@ -77,5 +77,11 @@
 
   .li {
     margin-right: 0.7em;
+  }
+}
+
+@media screen and (max-width: 1408px) {
+  .header {
+    padding: 1rem 6rem;
   }
 }

@@ -41,9 +41,15 @@
 
     .hello {
         margin: 0;
-    }
+      }
 
     .img {
         width: 70%;
+    }
+}
+
+@media screen and (max-width: 1408px) {
+    .hello {
+      margin: 2em !important;
     }
 }
