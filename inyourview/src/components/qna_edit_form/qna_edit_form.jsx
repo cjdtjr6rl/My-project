@@ -80,7 +80,7 @@ function QnaEditForm({ qnaRepository, loginRepository }) {
     <section className={styles.qnaedit}>
       <Header />
       <article className={styles.hello}>
-        <h3 className={styles.title}>공지사항</h3>
+        <h3 className={styles.title}>게시판</h3>
         <form ref={formRef} className={styles.form}>
           <table className={styles.table}>
             <tbody className={styles.tbody}>

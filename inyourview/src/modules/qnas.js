@@ -24,6 +24,7 @@ const initialState = [];
 
 const stopSync = qnaRepository.syncQna((qnas) => {
   let initialArray = initialState.concat(qnas);
+  console.log(initialArray);
   return initialArray;
 });
 

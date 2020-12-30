@@ -20,6 +20,7 @@
   float: right;
   list-style: none;
   padding: 0;
+  transition: all 0.5s ease;
 }
 
 .li {
@@ -39,13 +40,13 @@
     top: 20px;
     left: 0;
     padding: 0;
-    width: 80px;
+    width: 90px;
     background-color: rgba(253, 253, 253, 0.5);
     transition: all 0.5s ease;
 }
 
 .sevli {
-    padding: 2px 6px 0;
+    padding: 1px 6px 4px;
 }
 
 .button {
@@ -66,17 +67,86 @@
     font-size: 0.7rem;
 }
 
+.menu_trigger,
+.menu_trigger span {
+	display : inline-block;
+	transition : all .4s;
+	box-sizing : border-box;
+}
+.menu_trigger {
+  position : absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 9999;
+	width : 26px;
+  height : 26px;
+  background: transparent;
+  border: 0;
+}
+.menu_trigger span {
+	position : absolute;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background-color: black;
+  border-radius: 4px;
+}
+.menu_trigger span:nth-of-type(1) {
+	top: 0;
+}
+.menu_trigger span:nth-of-type(2) {
+	top: 11px;
+}
+.menu_trigger span:nth-of-type(3) {
+	bottom: 0;
+}
+
+.menu_trigger.active {
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+.menu_trigger.active span:nth-of-type(1) {
+	-webkit-transform : translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  top: -8px;
+}
+.menu_trigger.active span:nth-of-type(2) {
+	-webkit-transform: translateY(0) rotate(45deg);
+	transform: translateY(0) rotate(45deg);
+}
+.menu_trigger.active span:nth-of-type(3) {
+  opacity: 0;
+  bottom: -10px;
+}
+
 @media screen and (max-width: mobileQuery) {
   .header {
-    padding: 1rem 3rem !important;
+    padding: 1rem 2rem !important;
+  }
+  .header:hover {
+    background-color: transparent;
   }
 
-  .btn {
-    font-size: 0.5rem;
+  .ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 60%;
+    display: block;
+    margin-top: 0;
+    background: rgba(253, 253, 253, 0.8);
+    padding: 5em 0 0 1em;
   }
 
   .li {
-    margin-right: 0.7em;
+    margin-bottom: 1em;
+  }
+
+  .sevul {
+    display: block;
+    background-color: transparent;
+    position: initial;
   }
 }
 

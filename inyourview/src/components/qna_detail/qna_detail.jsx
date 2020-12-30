@@ -57,7 +57,7 @@ function QnaDetail({ qnaRepository, loginRepository }) {
     <section className={styles.qnadetail}>
       <Header />
       <article className={styles.hello}>
-        <h3 className={styles.title}>QnA</h3>
+        <h3 className={styles.title}>게시판</h3>
         <div className={styles.tablewrap}>
           {isBigScreen && (
             <table className={styles.table}>

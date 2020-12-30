@@ -70,7 +70,7 @@ function QnaAddForm({ qnaRepository, loginRepository }) {
     <section className={styles.qnaadd}>
       <Header />
       <article className={styles.hello}>
-        <h3 className={styles.title}>QnA</h3>
+        <h3 className={styles.title}>게시판</h3>
         <form ref={formRef} className={styles.form}>
           <table className={styles.table}>
             <tbody className={styles.tbody}>
@@ -105,7 +105,7 @@ function QnaAddForm({ qnaRepository, loginRepository }) {
                     ref={contentRef}
                     className={styles.textarea}
                     name="content"
-                    placeholder="내용을 입력하세요."
+                    defaultValue="신청자: 연락처: 지역: 신청 서비스: 신청 사연: "
                   />
                 </td>
               </tr>
