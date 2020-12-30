@@ -1,6 +1,6 @@
 @value mobileQuery from '../../common/size.css';
 
-.portfolio {
+.procedure {
     height: 100%;
     width: 100%;
     display: flex;
@@ -19,18 +19,13 @@
     text-align: center;
 }
 
+.figure {
+    margin: 0;
+}
+
 .img {
-    display: block;
-    width: 51%;
+    width: 900px;
     margin-bottom: 5em;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
 }
 
 @media screen and (max-width: mobileQuery) {
@@ -41,9 +36,11 @@
 
     .hello {
         margin: 0;
-      }
+    }
+}
 
+@media screen and (max-width: 1408px) {
     .img {
-        width: 95%;
+        width: 100%;
     }
 }

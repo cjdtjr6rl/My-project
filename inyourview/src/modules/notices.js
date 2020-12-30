@@ -20,15 +20,21 @@ export const delNotice = (id) => ({
   id,
 });
 
-const initialState = [];
+let initialArray = [];
 
 const stopSync = noticeRepository.syncNotice((notices) => {
-  let initialArray = initialState.concat(notices);
-  console.log(initialArray);
+  initialArray.concat(notices);
   return initialArray;
 });
 
-export default function notices(state = stopSync, action) {
+// useEffect(() => {
+//     const stopSync = noticeRepository.syncNotice((notices) => {
+//       setNotices(notices);
+//     });
+//     return () => stopSync();
+//   }, [noticeRepository]);
+
+export default function notices(state = initialArray, action) {
   switch (action.type) {
     case ADD_NOTICE:
       return state.saveNotice(action.notice);

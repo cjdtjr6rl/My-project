@@ -82,7 +82,7 @@ function Header(props) {
                   </button>
                 </li>
               </Link>
-              <Link to="/course">
+              <Link to="/procedure">
                 <li className={styles.sevli}>
                   <button className={`${styles.button} ${styles.btn}`}>
                     진행절차

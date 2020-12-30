@@ -26,7 +26,6 @@ const stopSync = qnaRepository.syncQna((qnas) => {
   let initialArray = initialState.concat(qnas);
   return initialArray;
 });
-console.log(stopSync);
 
 export default function qnas(state = stopSync, action) {
   switch (action.type) {

@@ -81,7 +81,7 @@
     }
 
     .pagination a {
-        padding: 6px;
+        padding: 2px 6px;
     }
 
     .pagination {
@@ -91,11 +91,7 @@
 
 @media screen and (max-width: 1408px) {
     .tablewrap {
-        width: 90%;
+        width: 95%;
         margin: 5em auto 10em;
-    }
-
-    .hello {
-        margin: 2em !important;
     }
 }

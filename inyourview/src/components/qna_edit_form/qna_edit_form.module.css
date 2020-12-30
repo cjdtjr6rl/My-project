@@ -86,11 +86,7 @@
 
 @media screen and (max-width: 1408px) {
   .form {
-      width: 90%;
+      width: 95%;
       margin: 5em auto 10em;
-  }
-
-  .hello {
-    margin: 2em !important;
   }
 }
