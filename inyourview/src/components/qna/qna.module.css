@@ -54,20 +54,19 @@
   
   .pagination__link {
     font-weight: bold;
+    margin-left: 0.5em;
   }
   
   .pagination__link_active a {
     color: #fff;
     background: #6e6f71;
+    margin-left: 0.5em;
   }
   
   .pagination__link_disabled a {
     color: rgb(198, 197, 202);
     border: 1px solid rgb(198, 197, 202);
-  }
-
-  li {
-      margin-left: 0.5em;
+    margin-left: 0.5em;
   }
 
   @media screen and (max-width: mobileQuery) {

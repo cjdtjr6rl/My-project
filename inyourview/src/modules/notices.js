@@ -26,6 +26,7 @@ const stopSync = noticeRepository.syncNotice((notices) => {
   initialArray.concat(notices);
   return initialArray;
 });
+console.log(stopSync);
 
 // useEffect(() => {
 //     const stopSync = noticeRepository.syncNotice((notices) => {
