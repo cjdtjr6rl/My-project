@@ -1,12 +1,11 @@
-import LoginRepository from "../service/login_repository";
+// import LoginRepository from "../service/login_repository";
 import NoticeRepository from "../service/notice_repository";
 
-const SET_NOTICE = "notices/SET_NOTICE";
+// const SET_NOTICE = "notices/SET_NOTICE";
 const ADD_NOTICE = "notices/ADD_NOTICE";
 const DEL_NOTICE = "notices/DEL_NOTICE";
-const EDIT_NOTICE = "notices/EDIT_NOTICE";
 
-const loginRepository = new LoginRepository();
+// const loginRepository = new LoginRepository();
 const noticeRepository = new NoticeRepository();
 
 export const addNotice = (notice) => ({
@@ -21,10 +20,12 @@ export const delNotice = (id) => ({
   id,
 });
 
-const initialState = {};
+const initialState = [];
 
 const stopSync = noticeRepository.syncNotice((notices) => {
-  return notices;
+  let initialArray = initialState.concat(notices);
+  console.log(initialArray);
+  return initialArray;
 });
 
 export default function notices(state = stopSync, action) {
