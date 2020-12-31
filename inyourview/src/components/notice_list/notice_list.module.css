@@ -7,6 +7,7 @@
 
 .inline {
     padding: .25em .75em;
+    display: inline !important;
 }
 
 @media screen and (max-width: mobileQuery) {

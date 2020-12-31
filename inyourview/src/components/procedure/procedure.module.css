@@ -42,5 +42,6 @@
 @media screen and (max-width: 1408px) {
     .img {
         width: 100%;
+        margin-bottom: 1em;
     }
 }

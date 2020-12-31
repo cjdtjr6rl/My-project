@@ -22,18 +22,10 @@ export const delNotice = (id) => ({
 
 let initialArray = [];
 
-const stopSync = noticeRepository.syncNotice((notices) => {
+noticeRepository.syncNotice((notices) => {
   initialArray.concat(notices);
   return initialArray;
 });
-console.log(stopSync);
-
-// useEffect(() => {
-//     const stopSync = noticeRepository.syncNotice((notices) => {
-//       setNotices(notices);
-//     });
-//     return () => stopSync();
-//   }, [noticeRepository]);
 
 export default function notices(state = initialArray, action) {
   switch (action.type) {

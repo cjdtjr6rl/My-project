@@ -17,13 +17,13 @@ const store = createStore(rootReducer);
 console.log(store.getState());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App
       noticeRepository={noticeRepository}
       qnaRepository={qnaRepository}
       loginRepository={loginRepository}
     />
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById("root")
 );
 

@@ -11,12 +11,12 @@ class Way extends Component {
         <article className={styles.hello}>
           <h3 className={styles.title}>찾아오는 길</h3>
           <div className={styles.map}>
-            <p className={styles.left}>
+            <div className={styles.left}>
               <img className={styles.img} src="/images/map.png" alt="map" />
-            </p>
-            <p className={styles.right}>
+            </div>
+            <div className={styles.right}>
               <Mapping />
-            </p>
+            </div>
           </div>
           <span className={styles.info}>
             <p>서울시 강서구 마곡동 800-1 문영퀸즈파크11차B동 724호</p>
