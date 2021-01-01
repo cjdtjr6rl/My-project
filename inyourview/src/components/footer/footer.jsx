@@ -66,7 +66,22 @@ function Footer({ users }) {
           </ul>
           <ul className={styles.ul}>
             <li>
-              <span>Follow us</span>
+              <span>Follow us</span>&nbsp;&nbsp;
+              <a href="https://google.com">
+                <img
+                  className={styles.follow}
+                  src="/images/i.png"
+                  alt="instagram"
+                />
+              </a>
+              &nbsp;&nbsp;
+              <a href="https://google.com">
+                <img
+                  className={styles.follow}
+                  src="/images/f.png"
+                  alt="facebook"
+                />
+              </a>
             </li>
             <li className={styles.login}>
               {users.login === "login" ? (
