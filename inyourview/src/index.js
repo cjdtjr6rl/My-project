@@ -8,6 +8,7 @@ import QnaRepository from "./service/qna_repository";
 import LoginRepository from "./service/login_repository";
 import { createStore } from "redux";
 import rootReducer from "./modules";
+import { Provider } from "react-redux";
 
 const noticeRepository = new NoticeRepository();
 const qnaRepository = new QnaRepository();
@@ -17,13 +18,20 @@ const store = createStore(rootReducer);
 console.log(store.getState());
 
 ReactDOM.render(
-  <React.Fragment>
+  // <React.Fragment>
+  //   <App
+  //     noticeRepository={noticeRepository}
+  //     qnaRepository={qnaRepository}
+  //     loginRepository={loginRepository}
+  //   />
+  // </React.Fragment>,
+  <Provider store={store}>
     <App
       noticeRepository={noticeRepository}
       qnaRepository={qnaRepository}
       loginRepository={loginRepository}
     />
-  </React.Fragment>,
+  </Provider>,
   document.getElementById("root")
 );
 

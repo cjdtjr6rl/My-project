@@ -20,19 +20,20 @@ export const delNotice = (id) => ({
   id,
 });
 
-let initialArray = [];
+let initialState = [];
+let initialArray = {};
 
 noticeRepository.syncNotice((notices) => {
-  initialArray.concat(notices);
-  return initialArray;
+  initialArray = initialState.concat(notices);
+  console.log(initialArray);
 });
 
 export default function notices(state = initialArray, action) {
   switch (action.type) {
     case ADD_NOTICE:
-      return state.saveNotice(action.notice);
+      return noticeRepository.saveNotice(action.notice);
     case DEL_NOTICE:
-      return state.removeNotice(action.id);
+      return noticeRepository.removeNotice(action.id);
     default:
       return state;
   }
