@@ -33,12 +33,6 @@ function NoticeAddForm({ noticeRepository, loginRepository }) {
   const contentRef = useRef();
   const pwdRef = useRef();
 
-  const [hidden, setHid] = useState("");
-
-  const onChange = function (e) {
-    setHid(e.target.value);
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
     const date = Date.now();
@@ -54,7 +48,6 @@ function NoticeAddForm({ noticeRepository, loginRepository }) {
       content: contentRef.current.value || "",
       date: moment(date).format("yyyy-MM-DD"),
       password: encrypt || "",
-      secret: hidden,
     };
 
     formRef.current.reset();
@@ -118,18 +111,6 @@ function NoticeAddForm({ noticeRepository, loginRepository }) {
                     type="password"
                     name="password"
                   />
-                </td>
-              </tr>
-              <tr className={styles.tr}>
-                <th className={styles.th}>비밀글설정</th>
-                <td
-                  className={`${styles.td} ${styles.radio}`}
-                  onChange={onChange}
-                >
-                  <input type="radio" name="secret" value="common" />
-                  공개글&nbsp;
-                  <input type="radio" name="secret" value="secret" />
-                  비밀글
                 </td>
               </tr>
             </tbody>

@@ -26,17 +26,11 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
   const contentRef = useRef();
   const pwdRef = useRef();
 
-  const [hidden, setHid] = useState("");
-
   const decrypt = JSON.parse(
     CryptoJS.AES.decrypt(password, "secret-key-1").toString(CryptoJS.enc.Utf8)
   );
 
   const onChange = function (e) {
-    setHid(e.target.value);
-  };
-
-  const onChang = function (e) {
     if (e.currentTarget === null) {
       return;
     }
@@ -59,7 +53,6 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
         content: contentRef.current.value || "",
         date: date,
         password: encrypt || "",
-        secret: hidden,
       };
 
       formRef.current.reset();
@@ -93,7 +86,7 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
                     type="text"
                     name="title"
                     defaultValue={title}
-                    onChange={onChang}
+                    onChange={onChange}
                   />
                 </td>
               </tr>
@@ -106,7 +99,7 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
                     type="text"
                     name="name"
                     defaultValue={name}
-                    onChange={onChang}
+                    onChange={onChange}
                   />
                 </td>
               </tr>
@@ -118,7 +111,7 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
                     className={styles.textarea}
                     name="content"
                     defaultValue={content}
-                    onChange={onChang}
+                    onChange={onChange}
                   />
                 </td>
               </tr>
@@ -131,18 +124,6 @@ function NoticeEditForm({ noticeRepository, loginRepository }) {
                     type="password"
                     name="password"
                   />
-                </td>
-              </tr>
-              <tr className={styles.tr}>
-                <th className={styles.th}>비밀글설정</th>
-                <td
-                  className={`${styles.td} ${styles.radio}`}
-                  onChange={onChange}
-                >
-                  <input type="radio" name="secret" value="common" />
-                  공개글&nbsp;
-                  <input type="radio" name="secret" value="secret" />
-                  비밀글
                 </td>
               </tr>
             </tbody>
