@@ -1,11 +1,8 @@
-// import LoginRepository from "../service/login_repository";
 import NoticeRepository from "../service/notice_repository";
 
-// const SET_NOTICE = "notices/SET_NOTICE";
 const ADD_NOTICE = "notices/ADD_NOTICE";
 const DEL_NOTICE = "notices/DEL_NOTICE";
 
-// const loginRepository = new LoginRepository();
 const noticeRepository = new NoticeRepository();
 
 export const addNotice = (notice) => ({
@@ -20,15 +17,13 @@ export const delNotice = (id) => ({
   id,
 });
 
-let initialState = [];
-let initialArray = {};
+let initialState = {};
 
 noticeRepository.syncNotice((notices) => {
-  initialArray = initialState.concat(notices);
-  console.log(initialArray);
+  Object.assign(initialState, notices);
 });
 
-export default function notices(state = initialArray, action) {
+export default function notices(state = initialState, action) {
   switch (action.type) {
     case ADD_NOTICE:
       return noticeRepository.saveNotice(action.notice);
