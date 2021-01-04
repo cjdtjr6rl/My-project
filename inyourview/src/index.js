@@ -9,12 +9,13 @@ import LoginRepository from "./service/login_repository";
 import { createStore } from "redux";
 import rootReducer from "./modules";
 import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const noticeRepository = new NoticeRepository();
 const qnaRepository = new QnaRepository();
 const loginRepository = new LoginRepository();
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools());
 console.log(store.getState());
 
 ReactDOM.render(
