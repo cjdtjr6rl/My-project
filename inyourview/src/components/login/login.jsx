@@ -5,19 +5,19 @@ import Header from "../header/header";
 import styles from "./login.module.css";
 import CryptoJS from "crypto-js";
 
-function Login({ loginRepository }) {
+function Login({ users, onLogin }) {
   const history = useHistory();
   const formRef = useRef();
   const idRef = useRef();
   const pwdRef = useRef();
-  const [users, setUsers] = useState({});
+  // const [users, setUsers] = useState({});
 
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
+  // useEffect(() => {
+  //   const stopSync = loginRepository.syncLogin((users) => {
+  //     setUsers(users);
+  //   });
+  //   return () => stopSync();
+  // }, [loginRepository]);
 
   const onSubmit = function (e) {
     e.preventDefault();
@@ -35,7 +35,8 @@ function Login({ loginRepository }) {
     );
     if (idRef.current.value === users.id && pwdRef.current.value === decrypt) {
       alert("로그인하였습니다.");
-      loginRepository.saveLogin(user);
+      // loginRepository.saveLogin(user);
+      onLogin(user);
       history.push("/");
     } else {
       alert("아이디와 비밀번호를 다시 확인해주세요.");

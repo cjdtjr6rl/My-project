@@ -18,6 +18,7 @@ import QnaDetail from "./components/qna_detail/qna_detail";
 import QnaEditForm from "./components/qna_edit_form/qna_edit_form";
 import Login from "./components/login/login";
 import Procedure from "./components/procedure/procedure";
+import LoginContainer from "./containers/LoginContainer";
 
 function App({ children, noticeRepository, qnaRepository, loginRepository }) {
   <Container style={{ margin: 20 }}>
@@ -57,7 +58,8 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             <Main />
           </Route>
           <Route path="/login">
-            <Login loginRepository={loginRepository} />
+            {/* <Login loginRepository={loginRepository} /> */}
+            <LoginContainer />
           </Route>
           <Route path="/intro">
             <Intro loginRepository={loginRepository} />

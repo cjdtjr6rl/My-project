@@ -58,7 +58,8 @@ function QnaAddForm({ qnaRepository, loginRepository }) {
     };
 
     formRef.current.reset();
-    qnaRepository.saveQna(qna);
+    // qnaRepository.saveQna(qna);
+    console.log(qna);
     history.push("/qna");
   };
 
