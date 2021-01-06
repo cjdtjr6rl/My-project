@@ -18,8 +18,11 @@ loginRepository.syncLogin((user) => {
 export default function users(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      // console.log(action.user);
-      return loginRepository.saveLogin(action.user);
+      const logging = loginRepository.saveLogin(action.user);
+      return {
+        ...state,
+        logging,
+      };
     default:
       return state;
   }

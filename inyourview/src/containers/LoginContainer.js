@@ -8,7 +8,6 @@ function LoginContainer() {
   const dispatch = useDispatch();
 
   const onLogin = (user) => dispatch(managerLogin(user));
-  //   const onLogin = (user) => console.log(user);
 
   return <Login users={user} onLogin={onLogin} />;
 }

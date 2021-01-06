@@ -10,14 +10,6 @@ function Login({ users, onLogin }) {
   const formRef = useRef();
   const idRef = useRef();
   const pwdRef = useRef();
-  // const [users, setUsers] = useState({});
-
-  // useEffect(() => {
-  //   const stopSync = loginRepository.syncLogin((users) => {
-  //     setUsers(users);
-  //   });
-  //   return () => stopSync();
-  // }, [loginRepository]);
 
   const onSubmit = function (e) {
     e.preventDefault();
