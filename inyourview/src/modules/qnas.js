@@ -7,9 +7,7 @@ const qnaRepository = new QnaRepository();
 
 export const addQna = (qna) => ({
   type: ADD_QNA,
-  qna: {
-    qna,
-  },
+  qna,
 });
 
 export const delQna = (id) => ({
@@ -26,7 +24,11 @@ qnaRepository.syncQna((qnas) => {
 export default function qnas(state = initialState, action) {
   switch (action.type) {
     case ADD_QNA:
-      return qnaRepository.saveQna(action.qna);
+      const adding = qnaRepository.saveQna(action.qna);
+      return {
+        ...state,
+        adding,
+      };
     case DEL_QNA:
       return qnaRepository.removeQna(action.id);
     default:

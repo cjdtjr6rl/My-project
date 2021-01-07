@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from "./qna_add_form.module.css";
@@ -7,24 +7,9 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 import CryptoJS from "crypto-js";
 
-function QnaAddForm({ qnaRepository, loginRepository }) {
+function QnaAddForm({ user, qnas, onAdd }) {
   const history = useHistory();
-  const [qnas, setQnas] = useState({});
-  const [users, setUsers] = useState({});
 
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
-
-  useEffect(() => {
-    const stopSync = qnaRepository.syncQna((qnas) => {
-      setQnas(qnas);
-    });
-    return () => stopSync();
-  }, [qnaRepository]);
   const number = Object.keys(qnas).length + 1;
 
   const formRef = useRef();
@@ -59,7 +44,7 @@ function QnaAddForm({ qnaRepository, loginRepository }) {
 
     formRef.current.reset();
     // qnaRepository.saveQna(qna);
-    console.log(qna);
+    onAdd(qna);
     history.push("/qna");
   };
 
@@ -139,7 +124,7 @@ function QnaAddForm({ qnaRepository, loginRepository }) {
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
-        <Footer users={users} />
+        <Footer users={user} />
       </article>
     </section>
   );

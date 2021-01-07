@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router";
 import Footer from "../footer/footer";
 import Header from "../header/header";
@@ -27,7 +27,6 @@ function Login({ users, onLogin }) {
     );
     if (idRef.current.value === users.id && pwdRef.current.value === decrypt) {
       alert("로그인하였습니다.");
-      // loginRepository.saveLogin(user);
       onLogin(user);
       history.push("/");
     } else {

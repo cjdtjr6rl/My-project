@@ -19,13 +19,6 @@ const store = createStore(rootReducer, composeWithDevTools());
 console.log(store.getState());
 
 ReactDOM.render(
-  // <React.Fragment>
-  //   <App
-  //     noticeRepository={noticeRepository}
-  //     qnaRepository={qnaRepository}
-  //     loginRepository={loginRepository}
-  //   />
-  // </React.Fragment>,
   <Provider store={store}>
     <App
       noticeRepository={noticeRepository}
