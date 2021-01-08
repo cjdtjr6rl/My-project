@@ -6,19 +6,19 @@ import Button from "../button/button";
 import { useHistory, useLocation } from "react-router-dom";
 import CryptoJS from "crypto-js";
 
-function QnaEditForm({ qnaRepository, loginRepository }) {
+function QnaEditForm({ user, onEdit }) {
   const history = useHistory();
   const data = useLocation();
   const qnaData = data.state;
   const { index, id, title, name, content, password, date } = qnaData;
-  const [users, setUsers] = useState({});
+  // const [users, setUsers] = useState({});
 
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
+  // useEffect(() => {
+  //   const stopSync = loginRepository.syncLogin((users) => {
+  //     setUsers(users);
+  //   });
+  //   return () => stopSync();
+  // }, [loginRepository]);
 
   const formRef = useRef();
   const titleRef = useRef();
@@ -63,7 +63,8 @@ function QnaEditForm({ qnaRepository, loginRepository }) {
       };
 
       formRef.current.reset();
-      qnaRepository.saveQna(qna);
+      // qnaRepository.saveQna(qna);
+      onEdit(qna);
       history.push("/qna");
     } else {
       e.preventDefault();
@@ -151,7 +152,7 @@ function QnaEditForm({ qnaRepository, loginRepository }) {
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
-        <Footer users={users} />
+        <Footer users={user} />
       </article>
     </section>
   );

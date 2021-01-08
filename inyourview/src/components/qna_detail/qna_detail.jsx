@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import Footer from "../footer/footer";
@@ -8,19 +8,19 @@ import { useLocation } from "react-router";
 import CryptoJS from "crypto-js";
 import { useMediaQuery } from "react-responsive";
 
-function QnaDetail({ qnaRepository, loginRepository }) {
+function QnaDetail({ user, qnas, onDel }) {
   const history = useHistory();
   const data = useLocation();
   const qnaData = data.state;
   const { id, title, name, date, content, password } = qnaData;
-  const [users, setUsers] = useState({});
+  // const [users, setUsers] = useState({});
 
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
+  // useEffect(() => {
+  //   const stopSync = loginRepository.syncLogin((users) => {
+  //     setUsers(users);
+  //   });
+  //   return () => stopSync();
+  // }, [loginRepository]);
 
   const pwdRef = useRef();
 
@@ -39,7 +39,8 @@ function QnaDetail({ qnaRepository, loginRepository }) {
   const deleteQna = () => {
     if (window.confirm("삭제 하시겠습니까?")) {
       if (pwdRef.current.value === decrypt) {
-        qnaRepository.removeQna(id);
+        // qnaRepository.removeQna(id);
+        onDel(id);
         history.push("/qna");
       } else {
         alert("비밀번호가 일치하지 않습니다.");
@@ -157,7 +158,7 @@ function QnaDetail({ qnaRepository, loginRepository }) {
           &nbsp;
           <Button name="삭제" onClick={deleteQna} />
         </div>
-        <Footer users={users} />
+        <Footer users={user} />
       </article>
     </section>
   );

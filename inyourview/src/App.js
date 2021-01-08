@@ -12,11 +12,13 @@ import NoticeDetail from "./components/notice_detail/notice_detail";
 import { Container, Header, List } from "semantic-ui-react";
 
 import pkg from "semantic-ui-react/package.json";
-import QnaDetail from "./components/qna_detail/qna_detail";
-import QnaEditForm from "./components/qna_edit_form/qna_edit_form";
 import Procedure from "./components/procedure/procedure";
 import LoginContainer from "./containers/LoginContainer";
-import { QnaAddContainer } from "./containers/QnaContainer";
+import {
+  QnaAddContainer,
+  QnaDelContainer,
+  QnaEditContainer,
+} from "./containers/QnaContainer";
 import Qna from "./components/qna/qna";
 
 function App({ children, noticeRepository, qnaRepository, loginRepository }) {
@@ -105,16 +107,18 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             <QnaAddContainer />
           </Route>
           <Route path="/qnaDetail">
-            <QnaDetail
+            {/* <QnaDetail
               qnaRepository={qnaRepository}
               loginRepository={loginRepository}
-            />
+            /> */}
+            <QnaDelContainer />
           </Route>
           <Route path="/qnaEdit">
-            <QnaEditForm
+            {/* <QnaEditForm
               qnaRepository={qnaRepository}
               loginRepository={loginRepository}
-            />
+            /> */}
+            <QnaEditContainer />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -30,7 +30,11 @@ export default function qnas(state = initialState, action) {
         adding,
       };
     case DEL_QNA:
-      return qnaRepository.removeQna(action.id);
+      const removing = qnaRepository.removeQna(action.id);
+      return {
+        ...state,
+        removing,
+      };
     default:
       return state;
   }
