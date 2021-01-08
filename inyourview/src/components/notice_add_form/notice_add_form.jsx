@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from "./notice_add_form.module.css";
@@ -7,24 +7,9 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 import CryptoJS from "crypto-js";
 
-function NoticeAddForm({ noticeRepository, loginRepository }) {
+function NoticeAddForm({ user, notices, onAdd }) {
   const history = useHistory();
-  const [notices, setNotices] = useState({});
-  const [users, setUsers] = useState({});
 
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
-
-  useEffect(() => {
-    const stopSync = noticeRepository.syncNotice((notices) => {
-      setNotices(notices);
-    });
-    return () => stopSync();
-  }, [noticeRepository]);
   const number = Object.keys(notices).length + 1;
 
   const formRef = useRef();
@@ -51,7 +36,7 @@ function NoticeAddForm({ noticeRepository, loginRepository }) {
     };
 
     formRef.current.reset();
-    noticeRepository.saveNotice(notice);
+    onAdd(notice);
     history.push("/notice");
   };
 
@@ -119,7 +104,7 @@ function NoticeAddForm({ noticeRepository, loginRepository }) {
           &nbsp;
           <Button name="취소" onClick={goBack} />
         </form>
-        <Footer users={users} />
+        <Footer users={user} />
       </article>
     </section>
   );

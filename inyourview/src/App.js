@@ -5,9 +5,6 @@ import Intro from "./components/intro/intro";
 import Portfolio from "./components/portfolio/portfolio";
 import Way from "./components/way/way";
 import Notice from "./components/notice/notice";
-import NoticeAddForm from "./components/notice_add_form/notice_add_form";
-import NoticeEditForm from "./components/notice_edit_form/notice_edit_form";
-import NoticeDetail from "./components/notice_detail/notice_detail";
 
 import { Container, Header, List } from "semantic-ui-react";
 
@@ -20,6 +17,11 @@ import {
   QnaEditContainer,
 } from "./containers/QnaContainer";
 import Qna from "./components/qna/qna";
+import {
+  NoticeAddContainer,
+  NoticeDelContainer,
+  NoticeEditContainer,
+} from "./containers/NoticeContainer";
 
 function App({ children, noticeRepository, qnaRepository, loginRepository }) {
   <Container style={{ margin: 20 }}>
@@ -80,22 +82,25 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             />
           </Route>
           <Route path="/noticeAdd">
-            <NoticeAddForm
+            {/* <NoticeAddForm
               noticeRepository={noticeRepository}
               loginRepository={loginRepository}
-            />
+            /> */}
+            <NoticeAddContainer />
           </Route>
           <Route path="/noticeDetail">
-            <NoticeDetail
+            {/* <NoticeDetail
               noticeRepository={noticeRepository}
               loginRepository={loginRepository}
-            />
+            /> */}
+            <NoticeDelContainer />
           </Route>
           <Route path="/noticeEdit">
-            <NoticeEditForm
+            {/* <NoticeEditForm
               noticeRepository={noticeRepository}
               loginRepository={loginRepository}
-            />
+            /> */}
+            <NoticeEditContainer />
           </Route>
           <Route path="/qna">
             <Qna
@@ -107,17 +112,9 @@ function App({ children, noticeRepository, qnaRepository, loginRepository }) {
             <QnaAddContainer />
           </Route>
           <Route path="/qnaDetail">
-            {/* <QnaDetail
-              qnaRepository={qnaRepository}
-              loginRepository={loginRepository}
-            /> */}
             <QnaDelContainer />
           </Route>
           <Route path="/qnaEdit">
-            {/* <QnaEditForm
-              qnaRepository={qnaRepository}
-              loginRepository={loginRepository}
-            /> */}
             <QnaEditContainer />
           </Route>
         </Switch>

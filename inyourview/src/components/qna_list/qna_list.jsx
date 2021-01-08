@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
 import { Label, Table } from "semantic-ui-react";
 import styles from "./qna_list.module.css";
 import CryptoJS from "crypto-js";
 import { useMediaQuery } from "react-responsive";
 
-function QnaList({ qna, login }) {
+const QnaList = memo(({ qna, login }) => {
   const history = useHistory();
   const { index, id, title, name, date, secret, password } = qna;
 
@@ -97,6 +97,6 @@ function QnaList({ qna, login }) {
       )}
     </>
   );
-}
+});
 
 export default QnaList;

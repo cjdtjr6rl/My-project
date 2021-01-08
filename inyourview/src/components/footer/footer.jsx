@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { useHistory } from "react-router";
 import LoginRepository from "../../service/login_repository";
 import styles from "./footer.module.css";
 
-function Footer({ users }) {
+const Footer = memo(({ users }) => {
   const loginRepository = new LoginRepository();
   const history = useHistory();
 
@@ -101,6 +101,6 @@ function Footer({ users }) {
       </div>
     </footer>
   );
-}
+});
 
 export default Footer;

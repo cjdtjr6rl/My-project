@@ -25,12 +25,11 @@ export function QnaAddContainer() {
 
 export function QnaDelContainer() {
   const user = useSelector((state) => state.login);
-  const qna = useSelector((state) => state.qnas);
   const dispatch = useDispatch();
 
   const onDel = (id) => dispatch(delQna(id));
 
-  return <QnaDetail user={user} qnas={qna} onDel={onDel} />;
+  return <QnaDetail user={user} onDel={onDel} />;
 }
 
 export function QnaEditContainer() {

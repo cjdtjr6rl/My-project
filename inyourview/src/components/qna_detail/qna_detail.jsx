@@ -8,19 +8,11 @@ import { useLocation } from "react-router";
 import CryptoJS from "crypto-js";
 import { useMediaQuery } from "react-responsive";
 
-function QnaDetail({ user, qnas, onDel }) {
+function QnaDetail({ user, onDel }) {
   const history = useHistory();
   const data = useLocation();
   const qnaData = data.state;
   const { id, title, name, date, content, password } = qnaData;
-  // const [users, setUsers] = useState({});
-
-  // useEffect(() => {
-  //   const stopSync = loginRepository.syncLogin((users) => {
-  //     setUsers(users);
-  //   });
-  //   return () => stopSync();
-  // }, [loginRepository]);
 
   const pwdRef = useRef();
 

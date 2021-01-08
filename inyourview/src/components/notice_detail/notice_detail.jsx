@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import Footer from "../footer/footer";
@@ -8,19 +8,11 @@ import { useLocation } from "react-router";
 import CryptoJS from "crypto-js";
 import { useMediaQuery } from "react-responsive";
 
-function NoticeDetail({ noticeRepository, loginRepository }) {
+function NoticeDetail({ user, onDel }) {
   const history = useHistory();
   const data = useLocation();
   const noticeData = data.state;
   const { id, title, name, date, content, password } = noticeData;
-  const [users, setUsers] = useState({});
-
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
 
   const pwdRef = useRef();
 
@@ -39,7 +31,7 @@ function NoticeDetail({ noticeRepository, loginRepository }) {
   const deleteNotice = () => {
     if (window.confirm("삭제 하시겠습니까?")) {
       if (pwdRef.current.value === decrypt) {
-        noticeRepository.removeNotice(id);
+        onDel(id);
         history.push("/notice");
       } else {
         alert("비밀번호가 일치하지 않습니다.");
@@ -157,7 +149,7 @@ function NoticeDetail({ noticeRepository, loginRepository }) {
           &nbsp;
           <Button name="삭제" onClick={deleteNotice} />
         </div>
-        <Footer users={users} />
+        <Footer users={user} />
       </article>
     </section>
   );

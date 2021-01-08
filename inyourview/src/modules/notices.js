@@ -7,9 +7,7 @@ const noticeRepository = new NoticeRepository();
 
 export const addNotice = (notice) => ({
   type: ADD_NOTICE,
-  notice: {
-    notice,
-  },
+  notice,
 });
 
 export const delNotice = (id) => ({
@@ -26,9 +24,17 @@ noticeRepository.syncNotice((notices) => {
 export default function notices(state = initialState, action) {
   switch (action.type) {
     case ADD_NOTICE:
-      return noticeRepository.saveNotice(action.notice);
+      const adding = noticeRepository.saveNotice(action.notice);
+      return {
+        ...state,
+        adding,
+      };
     case DEL_NOTICE:
-      return noticeRepository.removeNotice(action.id);
+      const removing = noticeRepository.removeNotice(action.id);
+      return {
+        ...state,
+        removing,
+      };
     default:
       return state;
   }

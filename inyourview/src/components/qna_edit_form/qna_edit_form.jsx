@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from "./qna_edit_form.module.css";
