@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Mapping from "../map/map";
 import Header from "../header/header";
 import styles from "./way.module.css";
+import Footer from "../footer/footer";
 
 class Way extends Component {
   render() {
@@ -23,6 +24,7 @@ class Way extends Component {
             <p>KAKAO: 인유어뷰</p>
             <p>e-MAIL: inyourviewpr@gmail.com</p>
           </span>
+          <Footer />
         </article>
       </section>
     );

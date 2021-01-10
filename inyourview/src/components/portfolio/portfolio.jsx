@@ -5,8 +5,6 @@ import styles from "./portfolio.module.css";
 import Slide from "react-reveal/Slide";
 
 function Portfolio() {
-  let users = JSON.parse(localStorage.getItem("user"));
-
   return (
     <section className={styles.portfolio}>
       <Header />
@@ -47,7 +45,7 @@ function Portfolio() {
             alt="In Your View Logo"
           />
         </Slide>
-        <Footer users={users} />
+        <Footer />
       </article>
     </section>
   );

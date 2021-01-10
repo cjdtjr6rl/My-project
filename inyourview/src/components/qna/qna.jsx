@@ -91,7 +91,7 @@ function Qna({ qnaRepository }) {
           </Table>
           <Button name="글쓰기" onClick={onClick} />
         </div>
-        <Footer users={users} />
+        <Footer />
       </article>
     </section>
   );

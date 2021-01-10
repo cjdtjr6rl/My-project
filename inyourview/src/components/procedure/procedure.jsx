@@ -4,8 +4,6 @@ import Header from "../header/header";
 import styles from "./procedure.module.css";
 
 function Procedure() {
-  let users = JSON.parse(localStorage.getItem("user"));
-
   return (
     <section className={styles.procedure}>
       <Header />
@@ -38,7 +36,7 @@ function Procedure() {
             alt="procedure05"
           />
         </figure>
-        <Footer users={users} />
+        <Footer />
       </article>
     </section>
   );

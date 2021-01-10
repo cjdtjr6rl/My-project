@@ -21,6 +21,7 @@ const QnaList = memo(({ qna, login }) => {
     if (return_value === decrypt) {
       history.push(`/qnaDetail/${id}`, qna);
     } else {
+      alert("비밀번호를 확인해주세요.");
       return false;
     }
   };

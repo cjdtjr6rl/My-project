@@ -3,7 +3,8 @@ import { useHistory } from "react-router";
 import LoginRepository from "../../service/login_repository";
 import styles from "./footer.module.css";
 
-const Footer = memo(({ users }) => {
+const Footer = memo(() => {
+  let users = JSON.parse(localStorage.getItem("user"));
   const loginRepository = new LoginRepository();
   const history = useHistory();
 
