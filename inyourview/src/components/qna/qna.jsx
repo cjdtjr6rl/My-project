@@ -11,18 +11,11 @@ import { useMediaQuery } from "react-responsive";
 
 const PER_PAGE = 10;
 
-function Qna({ qnaRepository, loginRepository }) {
+function Qna({ qnaRepository }) {
+  let users = JSON.parse(localStorage.getItem("user"));
   const history = useHistory();
   const [qnas, setQnas] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
-  const [users, setUsers] = useState({});
-
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
 
   useEffect(() => {
     const stopSync = qnaRepository.syncQna((qnas) => {

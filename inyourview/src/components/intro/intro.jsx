@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { memo } from "react";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./intro.module.css";
 
-function Intro({ loginRepository }) {
-  const [users, setUsers] = useState({});
-
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
+const Intro = memo(() => {
+  let users = JSON.parse(localStorage.getItem("user"));
 
   return (
     <section className={styles.intro}>
@@ -22,6 +15,6 @@ function Intro({ loginRepository }) {
       <Footer users={users} />
     </section>
   );
-}
+});
 
 export default Intro;

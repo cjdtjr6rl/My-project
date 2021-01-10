@@ -15,16 +15,18 @@ const noticeRepository = new NoticeRepository();
 const qnaRepository = new QnaRepository();
 const loginRepository = new LoginRepository();
 
+let initialState = {};
+
+loginRepository.syncLogin((users) => {
+  Object.assign(initialState, users);
+  localStorage.setItem("user", JSON.stringify(initialState));
+});
+
 const store = createStore(rootReducer, composeWithDevTools());
-console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App
-      noticeRepository={noticeRepository}
-      qnaRepository={qnaRepository}
-      loginRepository={loginRepository}
-    />
+    <App noticeRepository={noticeRepository} qnaRepository={qnaRepository} />
   </Provider>,
   document.getElementById("root")
 );

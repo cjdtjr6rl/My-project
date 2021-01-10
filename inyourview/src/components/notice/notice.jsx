@@ -11,11 +11,11 @@ import { useMediaQuery } from "react-responsive";
 
 const PER_PAGE = 10;
 
-function Notice({ noticeRepository, loginRepository }) {
+function Notice({ noticeRepository }) {
+  let users = JSON.parse(localStorage.getItem("user"));
   const history = useHistory();
   const [notices, setNotices] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
-  const [users, setUsers] = useState({});
 
   useEffect(() => {
     const stopSync = noticeRepository.syncNotice((notices) => {
@@ -23,13 +23,6 @@ function Notice({ noticeRepository, loginRepository }) {
     });
     return () => stopSync();
   }, [noticeRepository]);
-
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
 
   const onClick = function () {
     history.push("/noticeAdd");

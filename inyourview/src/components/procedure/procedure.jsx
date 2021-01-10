@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./procedure.module.css";
 
-function Procedure({ loginRepository }) {
-  const [users, setUsers] = useState({});
-
-  useEffect(() => {
-    const stopSync = loginRepository.syncLogin((users) => {
-      setUsers(users);
-    });
-    return () => stopSync();
-  }, [loginRepository]);
+function Procedure() {
+  let users = JSON.parse(localStorage.getItem("user"));
 
   return (
     <section className={styles.procedure}>

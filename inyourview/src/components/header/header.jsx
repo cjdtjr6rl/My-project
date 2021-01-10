@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./header.module.css";
 
-function Header(props) {
+const Header = memo(() => {
   const history = useHistory();
 
   const hover1 = function () {
@@ -220,6 +220,6 @@ function Header(props) {
       )}
     </header>
   );
-}
+});
 
 export default Header;
