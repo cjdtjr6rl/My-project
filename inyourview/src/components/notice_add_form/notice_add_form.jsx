@@ -25,19 +25,25 @@ function NoticeAddForm({ user, notices, onAdd }) {
       JSON.stringify(pwdRef.current.value),
       "secret-key-1"
     ).toString();
-    const notice = {
-      id: date,
-      index: number,
-      name: nameRef.current.value || "",
-      title: titleRef.current.value || "",
-      content: contentRef.current.value || "",
-      date: moment(date).format("yyyy-MM-DD"),
-      password: encrypt || "",
-    };
+    if (titleRef.current.value === "") {
+      alert("제목을 입력해주세요.");
+    } else if (pwdRef.current.value === "") {
+      alert("비밀번호를 설정해주새요.");
+    } else {
+      const notice = {
+        id: date,
+        index: number,
+        name: nameRef.current.value || "",
+        title: titleRef.current.value || "",
+        content: contentRef.current.value || "",
+        date: moment(date).format("yyyy-MM-DD"),
+        password: encrypt || "",
+      };
 
-    formRef.current.reset();
-    onAdd(notice);
-    history.push("/notice");
+      formRef.current.reset();
+      onAdd(notice);
+      history.push("/notice");
+    }
   };
 
   const goBack = function () {

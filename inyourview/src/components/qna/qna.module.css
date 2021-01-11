@@ -50,6 +50,7 @@
     border-radius: 5px;
     border: 1px solid #6e6f71;
     color: #6e6f71;
+    margin-left: 0.5em;
   }
   
   .pagination__link {
@@ -66,7 +67,6 @@
   .pagination__link_disabled a {
     color: rgb(198, 197, 202);
     border: 1px solid rgb(198, 197, 202);
-    margin-left: 0.5em;
   }
 
   @media screen and (max-width: mobileQuery) {

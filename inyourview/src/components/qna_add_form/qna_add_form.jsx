@@ -31,21 +31,26 @@ function QnaAddForm({ user, qnas, onAdd }) {
       JSON.stringify(pwdRef.current.value),
       "secret-key-1"
     ).toString();
-    const qna = {
-      id: date,
-      index: number,
-      name: nameRef.current.value || "",
-      title: titleRef.current.value || "",
-      content: contentRef.current.value || "",
-      date: moment(date).format("yyyy-MM-DD"),
-      password: encrypt || "",
-      secret: hidden,
-    };
+    if (titleRef.current.value === "") {
+      alert("제목을 입력해주세요.");
+    } else if (pwdRef.current.value === "") {
+      alert("비밀번호를 설정해주새요.");
+    } else {
+      const qna = {
+        id: date,
+        index: number,
+        name: nameRef.current.value || "",
+        title: titleRef.current.value || "",
+        content: contentRef.current.value || "",
+        date: moment(date).format("yyyy-MM-DD"),
+        password: encrypt,
+        secret: hidden,
+      };
 
-    formRef.current.reset();
-    // qnaRepository.saveQna(qna);
-    onAdd(qna);
-    history.push("/qna");
+      formRef.current.reset();
+      onAdd(qna);
+      history.push("/qna");
+    }
   };
 
   const goBack = function () {

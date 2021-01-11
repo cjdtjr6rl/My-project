@@ -35,15 +35,21 @@ const QnaList = memo(({ qna, login }) => {
 
   return (
     <>
-      {secret === "common" ? (
+      {secret === "secret" ? (
         <Table.Row>
           <Table.Cell>
             <Label ribbon>{index}</Label>
           </Table.Cell>
           <Table.Cell>
-            <p className={styles.detail} onClick={goDetail}>
-              {title}
-            </p>
+            {login === "login" ? (
+              <p className={styles.detail} onClick={goDetail3}>
+                {title}🔒
+              </p>
+            ) : (
+              <p className={styles.detail} onClick={goDetail2}>
+                {title}🔒
+              </p>
+            )}
           </Table.Cell>
           {isBigScreen && (
             <>
@@ -68,15 +74,9 @@ const QnaList = memo(({ qna, login }) => {
             <Label ribbon>{index}</Label>
           </Table.Cell>
           <Table.Cell>
-            {login === "login" ? (
-              <p className={styles.detail} onClick={goDetail3}>
-                {title}🔒
-              </p>
-            ) : (
-              <p className={styles.detail} onClick={goDetail2}>
-                {title}🔒
-              </p>
-            )}
+            <p className={styles.detail} onClick={goDetail}>
+              {title}
+            </p>
           </Table.Cell>
           {isBigScreen && (
             <>
