@@ -35,67 +35,42 @@ const QnaList = memo(({ qna, login }) => {
 
   return (
     <>
-      {secret === "secret" ? (
-        <Table.Row>
-          <Table.Cell>
-            <Label ribbon>{index}</Label>
-          </Table.Cell>
-          <Table.Cell>
-            {login === "login" ? (
-              <p className={styles.detail} onClick={goDetail3}>
-                {title}🔒
-              </p>
-            ) : (
-              <p className={styles.detail} onClick={goDetail2}>
-                {title}🔒
-              </p>
-            )}
-          </Table.Cell>
-          {isBigScreen && (
-            <>
-              <Table.Cell>
-                <p className={styles.content}>{name}</p>
-              </Table.Cell>
-              <Table.Cell>
-                <p className={styles.content}>{date}</p>
-              </Table.Cell>
-            </>
-          )}
-          {isSmallScreen && (
-            <>
-              <span className={styles.inline}>{name}</span>
-              <span className={styles.inline}>{date}</span>
-            </>
-          )}
-        </Table.Row>
-      ) : (
-        <Table.Row>
-          <Table.Cell>
-            <Label ribbon>{index}</Label>
-          </Table.Cell>
-          <Table.Cell>
+      <Table.Row>
+        <Table.Cell>
+          <Label ribbon>{index}</Label>
+        </Table.Cell>
+        <Table.Cell>
+          {secret === "secret" && login === "login" ? (
+            <p className={styles.detail} onClick={goDetail3}>
+              {title}🔒
+            </p>
+          ) : secret === "secret" ? (
+            <p className={styles.detail} onClick={goDetail2}>
+              {title}🔒
+            </p>
+          ) : (
             <p className={styles.detail} onClick={goDetail}>
               {title}
             </p>
-          </Table.Cell>
-          {isBigScreen && (
-            <>
-              <Table.Cell>
-                <p className={styles.content}>{name}</p>
-              </Table.Cell>
-              <Table.Cell>
-                <p className={styles.content}>{date}</p>
-              </Table.Cell>
-            </>
           )}
-          {isSmallScreen && (
-            <>
-              <span className={styles.inline}>{name}</span>
-              <span className={styles.inline}>{date}</span>
-            </>
-          )}
-        </Table.Row>
-      )}
+        </Table.Cell>
+        {isBigScreen && (
+          <>
+            <Table.Cell>
+              <p className={styles.content}>{name}</p>
+            </Table.Cell>
+            <Table.Cell>
+              <p className={styles.content}>{date}</p>
+            </Table.Cell>
+          </>
+        )}
+        {isSmallScreen && (
+          <>
+            <span className={styles.inline}>{name}</span>
+            <span className={styles.inline}>{date}</span>
+          </>
+        )}
+      </Table.Row>
     </>
   );
 });
