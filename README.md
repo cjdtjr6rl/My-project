@@ -32,3 +32,10 @@
 >
 > [schoolware-equipment-3](https://github.com/cjdtjr6rl/My-project/blob/master/Schoolware/schoolware-equipment-3.md)
 
+<br/>
+
+---
+
+### IN YOUR VIEW
+
+> [in your view](https://github.com/cjdtjr6rl/My-project/tree/master/inyourview)

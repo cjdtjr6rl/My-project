@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# IN YOUR VIEW
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Url of this site is [HERE](http://inyourview.s3-website.ap-northeast-2.amazonaws.com/).
 
-## Available Scripts
+## Project Subjet 🎀
 
-In the project directory, you can run:
+<br/>
 
-### `yarn start`
+## Project Requirements 🔖
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Intro: Produced service introduction file or images output.
+- Protfolio: Output produced images and files.
+- Way: Offilce map capture use.
+- Service List: Print pre-made picture files.
+- Progress Procedure: Print pre-made picture files.
+- Notice: Only administrators can create, modify, and delete posts. User read only.
+- Board: Can be created, modified, and deleted for scheduling.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br/>
 
-### `yarn test`
+## Implementation Technique ⚙️
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Front End
 
-### `yarn build`
+  -> HTML, CSS, JavaScript, React, Redux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Back End
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  -> Firebase
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Deployment
 
-### `yarn eject`
+  -> Aws S3
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Implementation Page 🖥
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Main Page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="https://user-images.githubusercontent.com/43205396/104419668-205b5080-55bc-11eb-96fb-de836cf41807.png" width="30%" height="30%" style="float: left;">
 
-## Learn More
+The pictures are printed as they slide on the main page. (all picture is mobile screen.)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Map
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="https://user-images.githubusercontent.com/43205396/104419711-32d58a00-55bc-11eb-843d-e364a99cd394.png" width="30%" height="30%" style="float: left;">
 
-### Code Splitting
+Used Google Map to show the map. So I implemented it to make it easier for users to fint it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+At the bottom, it output the address and company information.
 
-### Analyzing the Bundle Size
+### Notice
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="https://user-images.githubusercontent.com/43205396/104419692-2b15e580-55bc-11eb-960d-e2cd7e250cba.png" width="30%" height="30%" style="float: left;">
 
-### Making a Progressive Web App
+Indicates a list of board.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Notice are only available to administrators, and the write button is activated when manager log in.
 
-### Advanced Configuration
+If you are private when reading a post by dialing a password, you cannot see it if you cannot enter it and edit and delete too.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Notice Add
 
-### Deployment
+<img src="https://user-images.githubusercontent.com/43205396/104419700-2f420300-55bc-11eb-990e-baa15199f24a.png" width="30%" height="30%" style="float: left;">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+When writing a post, you must enter a draft and password.
 
-### `yarn build` fails to minify
+You can create it by selecting whether to make it public or private.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
