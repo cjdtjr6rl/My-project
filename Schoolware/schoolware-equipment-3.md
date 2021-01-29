@@ -23,7 +23,7 @@
   ![equipment_stu_rent](https://user-images.githubusercontent.com/43205396/73514781-500a5a80-4436-11ea-9088-5ab77f5cf96a.png)
 
   해당 학과의 조교가 기자재를 최대 며칠동안 대여를 할 수 있는지 제한을 두었기 때문에 기자재를 최대 일수로 지정하고 제한이 됩니다.<br/>학생은 자신의 학과의 기자재의 대여일수를 확인하며 대여합니다.
-  
+
   ```html
   <h2>기자재를 대여할 수 있습니다.</h2>
   <%int i=0; %>
@@ -39,11 +39,11 @@
   </c:forEach>
   <p>동일한 기자재를 2개 이상 대여할 수 없습니다.</p>
   ```
-  
+
   제한된 날짜를 불러와 페이지에 출력하게 하였습니다.<br/>
-  
+
   ### equipment.controller 중 management_st부분
-  
+
   ```java
   // 기자재 관리 현황_학생
   // 기자재 관리 현황 페이지 들어가기
@@ -66,9 +66,9 @@
   	return mv;
   }
   ```
-  
+
   이 중에서 기자재 정보를 출력하는 것은 list입니다.
-  
+
   ```sql
   <!-- 기자재관리(학생) -->
   <select id="equipment_management_st" parameterType="hashmap" resultType="hashmap">
@@ -86,15 +86,15 @@
   ]]>
   </select>
   ```
-  
+
   <code>seri_code</code> 를 기준으로 JOIN하여 <code>equipment_list</code> 와 <code>equipment_list_detail</code> 의 데이터를 출력합니다.<br/>
-  
+
   - 기자재 예약신청<a id="reservation"></a>
-  
+
     학생이 기자재를 예약하고 싶다면 예약 버튼을 누릅니다.<br/>그리하면 아래와 같은 팝업이 출력하게 됩니다.
-  
+
     ![equipment_stu_rent2](https://user-images.githubusercontent.com/43205396/73514945-de7edc00-4436-11ea-9fbb-c9ff4034650c.png)
-  
+
     ```html
     <table id="calendar" class="table table-bordered table-hover">
     	<thead>
@@ -132,13 +132,13 @@
     	</c:forEach>
     </table>
     ```
-  
+
     팝업 중 예약 날짜 현황 보기를 누르면 조교가 보는 달력이 학생에게도 똑같이 출력됩니다.<br/>어떤 기자재가 몇일까지 대여를 하고 있는지 확인할 수 있으며, 학생은 그것을 기준으로 조교에게 대여여부를 전송합니다.<br/>해당 기자재의 남아있는 기자재를 보여주고 예약을 진행할 수 있으며, 해당 기자재의 다른 학생이 예약한 날짜 현황도 확인할 수 있습니다. 
-  
+
     - 예약 날짜 현황 보기<a id="see"></a>
-  
+
       현재 그 기자재가 어떤 날짜에 대여가 되어있는지 확인할 수 있게 관리자가 보는 달력과 똑같이 출력이 됩니다.
-  
+
       ```javascript
       <!-- 기자재 대여현황 달력출력 -->
       <script type="text/javascript">
@@ -151,23 +151,23 @@
       			$("form[name=s_c]").submit();  
       		});
       	});	
-	    </script>
+      </script>
       ```
-	
+
       <br/>
-	
+
     - 기자재 예약하기<a id="want"></a>
-	
+
       예약하기를 누르면 아래와 같은 모달창이 하나 더 뜨게 됩니다.
-	
+
       ![equipment_stu_rent3](https://user-images.githubusercontent.com/43205396/73514951-e3439000-4436-11ea-8fd4-79aa324b6f32.png)
-  
+
       얼마나 대여를 할지 기간을 지정할 수 있습니다
-  
+
       ![equipment_stu_rent4](https://user-images.githubusercontent.com/43205396/73514954-e8084400-4436-11ea-933b-38721aa40ea6.png)
-  
+
       기자재를 대여를 하는데 현재의 날짜부터 대여를 시작할 수 있습니다. 그러나 종료하는 일이 해당 학과의 종료일이 제한되어 있기 때문에 제한되는 날짜를 범위 하에 날짜를 지정할 수 있습니다.<br/>여기서 힘들었던 부분은 datepicker라는 라이브러리로 가져온 달력에 저의 제한된 날짜를 출력하는 것이 힘들었습니다.<br/>현재의 날짜 이전으로 버튼이 비활성화 되도록 하며, 특정 학과의 제한된 일수만 열리도록 하는 것이 시행착오가 많았습니다.<br/>그러나 수많은 시행착오 끝에 구현하였습니다 ! 😭
-  
+
       ```javascript
       <!-- datepicker 달력 폼 start -->
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
@@ -191,7 +191,7 @@
       		// 최대 자릿수에 맞춰 숫자 앞에 0 추가
       		// pad(1, 3) --> 001
       		function pad(num, maxLength) {
-	    			num = num + '';
+      			num = num + '';
       			return (num.length < maxLength) ? pad('0' + num, maxLength) : num;
       		}
       
@@ -257,16 +257,16 @@
       
       <style>
       	.ui-datepicker { z-index:9999999999 !important; }
-    		.ui-front { z-index:9999996 !important; }
+      	.ui-front { z-index:9999996 !important; }
       	.ui-dialog { z-index:9999997 !important; }
       </style>
       <!-- datepicker 달력 폼 end -->
       ```
-  
+
       날짜를 전부 지정 후 요청을 보내면 예약이 됩니다.<br/>
-  
+
       ### equipment.controller 중 equipment_sending부분
-  
+
       ```java
       // 기자재 요청 보내기
       @RequestMapping(value = "/equipment_sending.do")
@@ -285,9 +285,9 @@
       	return mv;
       }
       ```
-      
-  날짜의 data Format이 <code>yy-mm-dd</code> 였지만 <code>yyyyMMddHHmmss</code>로 수정하여 DB에 저장되도록 수정하였습니다. 그렇게 해야 계산을 하기에 더 편리하기 때문입니다. 그리고 기자재의 <code>rent_code</code> 도 각기 다르게 지정해줄 수 있기 때문입니다.<br/><code>new Date</code>를 통해 불러와도 되지만 코드를 한번 더 작성하는 것이기 때문에 비효율적입니다.
-      
+
+      날짜의 data Format이 <code>yy-mm-dd</code> 였지만 <code>yyyyMMddHHmmss</code>로 수정하여 DB에 저장되도록 수정하였습니다. 그렇게 해야 계산을 하기에 더 편리하기 때문입니다. 그리고 기자재의 <code>rent_code</code> 도 각기 다르게 지정해줄 수 있기 때문입니다.<br/><code>new Date</code>를 통해 불러와도 되지만 코드를 한번 더 작성하는 것이기 때문에 비효율적입니다.
+
       ```sql
       <!-- 기자재대여(학생) -->
       <insert id="equipment_sending" parameterType="hashmap">
@@ -324,24 +324,18 @@
       		)
       	]]>
       </insert>
-    ```
-      
-    위와 같은 데이터들을 저장합니다.<br/>
-      
-    ---
-      
-    - 자신이 대여한 기자재 현황 확인 page <a id="selfcheck"></a>
-      
-      기자재를 대여를 했을 때 대여만 하고 끝이 아닌 자신이 어떤 기자재를 대여를 했는지, 언제 빌리고 반납해야 하는지 확인할 수 있어야 합니다. 그리하여 아래와 같은 자신이 대여한 기자재의 정보를 확인할 수 있습니다.<br/>
-      
-    ![equipment_stu_rent5](https://user-images.githubusercontent.com/43205396/73514957-ecccf800-4436-11ea-8004-757b72a25580.png)
-      
-    자신이 대여를 한 기자재가 잘못되었다면 취소를 통하여 취소를 할 수 있습니다.<br/>그러나 이미 기자재를 반납했으면 취소불가하여 이전에 빌렸던 현황만 출력되게 됩니다.
-      
-    ### equipment.controller 중 equipment_sending부분
-      
-      <br/>
-      
+      ```
+
+      위와 같은 데이터들을 저장합니다.<br/>
+
+      ---
+
+      - 자신이 대여한 기자재 현황 확인 page <a id="selfcheck"></a>
+
+        기자재를 대여를 했을 때 대여만 하고 끝이 아닌 자신이 어떤 기자재를 대여를 했는지, 언제 빌리고 반납해야 하는지 확인할 수 있어야 합니다. <br/>아래와 같은 자신이 대여한 기자재의 정보를 확인할 수 있습니다.<br/>![equipment_stu_rent5](https://user-images.githubusercontent.com/43205396/73514957-ecccf800-4436-11ea-8004-757b72a25580.png)<br/>자신이 대여를 한 기자재가 잘못되었다면 취소를 통하여 취소를 할 수 있습니다.<br/>그러나 이미 기자재를 반납했으면 취소불가하여 이전에 빌렸던 현황만 출력되게 됩니다.
+
+      ### equipment.controller 중 equipment_sending부분
+
       ```java
       // 기자재 신청 취소(학생)
       @RequestMapping(value = "/equipment_cancel.do")
@@ -354,12 +348,12 @@
       	equipmentService.equipment_rentDelete(commandMap.getMap(), req);
       	equipmentService.equipment_changeTotal2(commandMap.getMap(), req);
       	
-    	return mv;
+      	return mv;
       }
       ```
-      
+
       <br/>
-      
+
       ```sql
       <!-- 기자재번호 삭제 시 기자재 개수 수정 -->
       <delete id="equipment_rentDelete" parameterType="hashmap">
@@ -381,11 +375,12 @@
       			l.seri_code = d.seri_code
       		SET 
       			l.seri_status_num = l.seri_status_num - 1
-    		WHERE 
+      		WHERE 
       			d.seri_code = #{seri_code}
-    	]]>
+      	]]>
       </update>
       ```
+
       
-    
+
 
