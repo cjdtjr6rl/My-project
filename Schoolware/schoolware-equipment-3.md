@@ -325,21 +325,23 @@
       	]]>
       </insert>
     ```
-    
-  위와 같은 데이터들을 저장합니다.<br/>
-    
-  -----
-    
-  - 자신이 대여한 기자재 현황 확인 page <a id="selfcheck"></a>
-    
-    기자재를 대여를 했을 때 대여만 하고 끝이 아닌 자신이 어떤 기자재를 대여를 했는지, 언제 빌리고 반납해야 하는지 확인할 수 있어야 합니다. 그리하여 아래와 같은 자신이 대여한 기자재의 정보를 확인할 수 있습니다.
-    
+      
+    위와 같은 데이터들을 저장합니다.<br/>
+      
+    ---
+      
+    - 자신이 대여한 기자재 현황 확인 page <a id="selfcheck"></a>
+      
+      기자재를 대여를 했을 때 대여만 하고 끝이 아닌 자신이 어떤 기자재를 대여를 했는지, 언제 빌리고 반납해야 하는지 확인할 수 있어야 합니다. 그리하여 아래와 같은 자신이 대여한 기자재의 정보를 확인할 수 있습니다.<br/>
+      
     ![equipment_stu_rent5](https://user-images.githubusercontent.com/43205396/73514957-ecccf800-4436-11ea-8004-757b72a25580.png)
-    
+      
     자신이 대여를 한 기자재가 잘못되었다면 취소를 통하여 취소를 할 수 있습니다.<br/>그러나 이미 기자재를 반납했으면 취소불가하여 이전에 빌렸던 현황만 출력되게 됩니다.
-    
+      
     ### equipment.controller 중 equipment_sending부분
-    
+      
+      <br/>
+      
       ```java
       // 기자재 신청 취소(학생)
       @RequestMapping(value = "/equipment_cancel.do")
@@ -352,10 +354,12 @@
       	equipmentService.equipment_rentDelete(commandMap.getMap(), req);
       	equipmentService.equipment_changeTotal2(commandMap.getMap(), req);
       	
-      	return mv;
+    	return mv;
       }
-    ```
-    
+      ```
+      
+      <br/>
+      
       ```sql
       <!-- 기자재번호 삭제 시 기자재 개수 수정 -->
       <delete id="equipment_rentDelete" parameterType="hashmap">
@@ -377,12 +381,11 @@
       			l.seri_code = d.seri_code
       		SET 
       			l.seri_status_num = l.seri_status_num - 1
-      		WHERE 
+    		WHERE 
       			d.seri_code = #{seri_code}
-      	]]>
+    	]]>
       </update>
-    ```
+      ```
+      
     
-    
-    
-    
+
