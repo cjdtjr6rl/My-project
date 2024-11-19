@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
     "crypto-js": "^4.0.0",
-    "firebase": "^8.1.2",
+    "firebase": "^10.9.0",
     "google-maps-react": "^2.0.6",
     "moment": "^2.29.1",
     "react": "^17.0.1",
